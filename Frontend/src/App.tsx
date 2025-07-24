@@ -29,6 +29,7 @@ import ForgotPasswordPage from "@/pages/Auth/forgot-password";
 import LandingPage from "@/pages/Landing/page";
 
 import MapPage from "./pages/Map/page";
+import DemoPage from "./pages/Demo/page";
 
 function App() {
 

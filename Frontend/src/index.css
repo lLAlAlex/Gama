@@ -130,3 +130,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #e04749;
 }
+
+#canvas-container {
+  height: 100vh;
+}

@@ -157,7 +157,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="text-slate-400 text-center md:text-right">
-            © 2024 Gama. All rights reserved. Made with ❤️ in Indonesia.
+            © 2025 Gama. All rights reserved. Made with ❤️ in Indonesia.
           </p>
         </motion.div>
       </div>

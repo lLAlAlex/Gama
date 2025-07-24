@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Default Import
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -26,7 +27,7 @@ import ForgotPasswordPage from "@/pages/Auth/forgot-password";
 
 // Pages
 
-import LandingPage from "@/pages/Landing/page";
+import LandingPage from "@/pages/Landing/page2";
 
 import MapPage from "./pages/Map/page";
 import DemoPage from "./pages/Demo/page";
@@ -56,7 +57,8 @@ function App() {
           <Routes>
 
               
-            <Route path="/" element={<Layout children={<LandingPage/>}/>} />
+            {/* <Route path="/" element={<Layout children={<LandingPage/>}/>} /> */}
+            <Route path="/" element={<LandingPage/>} />
 
             <Route path="*" element={<NotFoundPage/>} />
 

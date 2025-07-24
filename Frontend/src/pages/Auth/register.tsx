@@ -71,12 +71,12 @@ export default function RegisterPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-red-50 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-red-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -84,16 +84,16 @@ export default function RegisterPage() {
         <motion.div className="hidden lg:block" initial="initial" animate="animate" variants={staggerContainer}>
           <motion.div variants={fadeInUp} className="text-center lg:text-left">
             <a href="/" className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <img src={MoveLeft} alt="arrow"></img>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Back to Home
               </span>
             </a>
 
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Join the
               </span>
               <br />
@@ -107,19 +107,19 @@ export default function RegisterPage() {
 
             <div className="space-y-4 mb-8">
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <Globe className="w-4 h-4 text-white" />
                 </div>
                 <span>Explore 500+ cultural landmarks</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <span>Collect and craft traditional artifacts</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <CheckCircle className="w-4 h-4 text-white" />
                 </div>
                 <span>Join a community of cultural explorers</span>
@@ -135,7 +135,7 @@ export default function RegisterPage() {
               height={400}
               className="rounded-2xl shadow-2xl"
             />
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-red-400 to-red-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
           </motion.div>
@@ -146,10 +146,10 @@ export default function RegisterPage() {
           <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-lg">
             <CardHeader className="text-center pb-6">
               <div className="lg:hidden flex items-center justify-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
-                <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-3xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                   Gama
                 </span>
               </div>
@@ -159,13 +159,13 @@ export default function RegisterPage() {
               {/* Progress Indicator */}
               <div className="flex items-center justify-center space-x-2 mt-6">
                 <div
-                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 1 ? "bg-indigo-600" : "bg-slate-200"}`}
+                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 1 ? "bg-red-600" : "bg-slate-200"}`}
                 />
                 <div
-                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 2 ? "bg-indigo-600" : "bg-slate-200"}`}
+                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 2 ? "bg-red-600" : "bg-slate-200"}`}
                 />
                 <div
-                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 3 ? "bg-indigo-600" : "bg-slate-200"}`}
+                  className={`w-8 h-2 rounded-full transition-colors ${currentStep >= 3 ? "bg-red-600" : "bg-slate-200"}`}
                 />
               </div>
             </CardHeader>
@@ -184,7 +184,7 @@ export default function RegisterPage() {
                         id="firstName"
                         type="text"
                         placeholder="Enter your first name"
-                        className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                        className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                         required
                       />
                     </div>
@@ -200,7 +200,7 @@ export default function RegisterPage() {
                         id="lastName"
                         type="text"
                         placeholder="Enter your last name"
-                        className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                        className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                         required
                       />
                     </div>
@@ -217,7 +217,7 @@ export default function RegisterPage() {
                       id="email"
                       type="email"
                       placeholder="Enter your email address"
-                      className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                   </div>
@@ -233,7 +233,7 @@ export default function RegisterPage() {
                       id="phone"
                       type="tel"
                       placeholder="Enter your phone number"
-                      className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                   </div>
@@ -249,7 +249,7 @@ export default function RegisterPage() {
                       <Input
                         id="dateOfBirth"
                         type="date"
-                        className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                        className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                         required
                       />
                     </div>
@@ -262,7 +262,7 @@ export default function RegisterPage() {
                     <div className="relative">
                       <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5 z-10" />
                       <Select>
-                        <SelectTrigger className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50">
+                        <SelectTrigger className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50">
                           <SelectValue placeholder="Select your province" />
                         </SelectTrigger>
                         <SelectContent>
@@ -287,7 +287,7 @@ export default function RegisterPage() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Create a strong password"
-                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                     <button
@@ -310,7 +310,7 @@ export default function RegisterPage() {
                       id="confirmPassword"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Confirm your password"
-                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                     <button
@@ -327,16 +327,16 @@ export default function RegisterPage() {
                   <input
                     type="checkbox"
                     id="terms"
-                    className="mt-1 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                    className="mt-1 rounded border-slate-300 text-red-600 focus:ring-red-500"
                     required
                   />
                   <label htmlFor="terms" className="text-sm text-slate-600 leading-relaxed">
                     I agree to the{" "}
-                    <a href="/terms" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                    <a href="/terms" className="text-red-600 hover:text-red-700 font-medium">
                       Terms of Service
                     </a>{" "}
                     and{" "}
-                    <a href="/privacy" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                    <a href="/privacy" className="text-red-600 hover:text-red-700 font-medium">
                       Privacy Policy
                     </a>
                   </label>
@@ -346,7 +346,7 @@ export default function RegisterPage() {
                   <input
                     type="checkbox"
                     id="newsletter"
-                    className="mt-1 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                    className="mt-1 rounded border-slate-300 text-red-600 focus:ring-red-500"
                   />
                   <label htmlFor="newsletter" className="text-sm text-slate-600 leading-relaxed">
                     I want to receive updates about new cultural landmarks, features, and community events
@@ -356,7 +356,7 @@ export default function RegisterPage() {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg"
+                    className="w-full h-12 bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white font-medium rounded-xl shadow-lg"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -412,7 +412,7 @@ export default function RegisterPage() {
 
               <p className="text-center text-slate-600">
                 Already have an account?{" "}
-                <a href="/login" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                <a href="/login" className="text-red-600 hover:text-red-700 font-medium">
                   Sign in here
                 </a>
               </p>

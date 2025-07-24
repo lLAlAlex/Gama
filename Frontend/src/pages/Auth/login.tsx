@@ -38,10 +38,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen py-16 bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen py-16 bg-gradient-to-br from-red-50 via-white to-red-50 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-red-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
@@ -51,16 +51,16 @@ export default function LoginPage() {
         <motion.div className="hidden lg:block" initial="initial" animate="animate" variants={staggerContainer}>
           <motion.div variants={fadeInUp} className="text-center lg:text-left">
             <a href="/" className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <img src={MoveLeft} alt="arrow"></img>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Back to Home
               </span>
             </a>
 
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Welcome Back
               </span>
               <br />
@@ -73,13 +73,13 @@ export default function LoginPage() {
 
             <div className="space-y-4 mb-8">
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <Globe className="w-4 h-4 text-white" />
                 </div>
                 <span>500+ Cultural landmarks to explore</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <span>Collect and craft traditional artifacts</span>
@@ -95,7 +95,7 @@ export default function LoginPage() {
               height={400}
               className="rounded-2xl shadow-2xl"
             />
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-red-400 to-red-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
           </motion.div>
@@ -106,10 +106,10 @@ export default function LoginPage() {
           <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-lg">
             <CardHeader className="text-center pb-8">
               <div className="lg:hidden flex items-center justify-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
-                <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-3xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                   Gama
                 </span>
               </div>
@@ -129,7 +129,7 @@ export default function LoginPage() {
                       id="email"
                       type="email"
                       placeholder="Enter your email"
-                      className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                   </div>
@@ -145,7 +145,7 @@ export default function LoginPage() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
-                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                      className="pl-12 pr-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                       required
                     />
                     <button
@@ -160,10 +160,10 @@ export default function LoginPage() {
 
                 <div className="flex items-center justify-between">
                   <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
+                    <input type="checkbox" className="rounded border-slate-300 text-red-600 focus:ring-red-500" />
                     <span className="text-sm text-slate-600">Remember me</span>
                   </label>
-                  <a href="/forgot-password" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
+                  <a href="/forgot-password" className="text-sm text-red-600 hover:text-red-700 font-medium">
                     Forgot password?
                   </a>
                 </div>
@@ -171,7 +171,7 @@ export default function LoginPage() {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg"
+                    className="w-full h-12 bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white font-medium rounded-xl shadow-lg"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -227,7 +227,7 @@ export default function LoginPage() {
 
               <p className="text-center text-slate-600">
                 Don't have an account?{" "}
-                <a href="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                <a href="/register" className="text-red-600 hover:text-red-700 font-medium">
                   Sign up here
                 </a>
               </p>

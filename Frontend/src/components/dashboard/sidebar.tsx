@@ -21,6 +21,7 @@ import {
   MapPin,
   Star,
   ChevronLeft,
+  Map,
 } from "lucide-react"
 
 interface SidebarProps {
@@ -80,6 +81,20 @@ export default function Sidebar({
     {
       id: "shop",
       label: "Shop",
+      icon: <ShoppingBag className="h-5 w-5" />,
+      color: "from-red-600 to-orange-500",
+      badge: "Sale",
+    },
+    {
+      id: "journey",
+      label: "Journey Recap",
+      icon: <Map className="h-5 w-5" />,
+      color: "from-pink-500 to-red-500",
+      badge: null,
+    },
+    {
+      id: "tes",
+      label: "Tes",
       icon: <ShoppingBag className="h-5 w-5" />,
       color: "from-red-600 to-orange-500",
       badge: "Sale",

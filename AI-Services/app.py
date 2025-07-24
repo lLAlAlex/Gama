@@ -13,10 +13,13 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Initialize the LLM
-# We're using Facebook's OPT model which is open and free
 model_id = "facebook/opt-1.3b"
-llm = openllm.LLM(model_id=model_id, backend="pt")
+llm = openllm.AutoLLM.for_model(
+    model_id,
+    backend="pt",
+    device="cpu",  # Use "cuda" if you have GPU
+    ensure_available=True
+)
 
 @app.route('/')
 def home():
@@ -32,13 +35,13 @@ def chat():
         return jsonify({'error': 'No message provided'}), 400
     
     try:
-        # Generate response
+        # Generate response using the correct method
         response = llm.generate(message)
         
         # Format the response
         bot_response = {
-            'message': response.outputs[0].text,
-            'history': chat_history + [{'user': message, 'bot': response.outputs[0].text}]
+            'message': response[0]['generated_text'],
+            'history': chat_history + [{'user': message, 'bot': response[0]['generated_text']}]
         }
         
         return jsonify(bot_response)

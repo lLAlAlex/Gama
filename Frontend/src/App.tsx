@@ -21,15 +21,13 @@ import LoadingScreen from "./pages/Utility/LoadingScreen";
 // Pages
 
 import LandingPage from "@/pages/Landing/page";
+import LoginPage from "@/pages/Login/page";
 
 function App() {
 
   const [loading, setLoading] = useState(true);
 
   return (
-
-    // Providers, Router, Scroll to Top Function and Button, and Custom Cursor
-
     <BrowserRouter>
       <ScrollToTopFunction />
       <ScrollToTop />
@@ -45,8 +43,6 @@ function App() {
 
           <Routes>
 
-            
-
             <Route path="/" element={<Layout />}>
               
                 <Route index element={<LandingPage/>} />
@@ -54,6 +50,8 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
 
             </Route>
+
+            <Route path="/login" element={<LoginPage />} />
 
           </Routes>
 

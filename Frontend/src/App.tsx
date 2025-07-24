@@ -57,6 +57,7 @@ function App() {
             <Route path="*" element={<NotFoundPage/>} />
 
             <Route path="/map" element={<MapPage />} />
+            <Route path="/demo" element={<DemoPage />} />
 
             {/* Authentication Pages */}
 

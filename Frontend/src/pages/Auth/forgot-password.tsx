@@ -16,6 +16,7 @@ import {
   Globe,
   Shield,
 } from "lucide-react";
+import MoveLeft from "@/assets/move-left.svg"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },

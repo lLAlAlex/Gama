@@ -8,24 +8,38 @@ Source: https://sketchfab.com/3d-models/stylized-chest-ae71996536344b5d80e4b50ca
 Title: Stylized Chest
 */
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import { useModalStore } from '../../../store/modalStore'
+import { RigidBody } from "@react-three/rapier";
 
 export function Chest(props) {
   const group = React.useRef()
   const { nodes, materials, animations } = useGLTF('/models/chest/model-transformed.glb')
   const { actions } = useAnimations(animations, group)
+
+  // const [isOpen, setIsOpen] = useState(false);
+  // const openModal = useModalStore((state) => state.openModal);
+
+  useEffect(() => {
+    if (actions.Open_Chest) {
+      actions.Open_Chest.reset().fadeIn(0.5).play()
+    }
+  }, [actions])
+
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Sketchfab_Scene">
-        <group name="RootNode" scale={0.007}>
-          <group name="Chest_Top" position={[-118.736, 165.022, 0]} rotation={[-Math.PI / 2, -0.009, 0]} scale={100}>
-            <mesh name="Chest_Top_Final_Chest_0" geometry={nodes.Chest_Top_Final_Chest_0.geometry} material={materials.Final_Chest} />
+    <RigidBody type="fixed" colliders="trimesh" {...props}>
+      <group ref={group} {...props} dispose={null}>
+        <group name="Sketchfab_Scene">
+          <group name="RootNode" scale={0.007}>
+            <group name="Chest_Top" position={[-118.736, 165.022, 0]} rotation={[-Math.PI / 2, -0.009, 0]} scale={100}>
+              <mesh name="Chest_Top_Final_Chest_0" geometry={nodes.Chest_Top_Final_Chest_0.geometry} material={materials.Final_Chest} />
+            </group>
           </group>
+          <mesh name="Coins_Final_Chest_0" geometry={nodes.Coins_Final_Chest_0.geometry} material={materials.Final_Chest} position={[0.015, 1.14, -0.026]} rotation={[-1.348, -0.146, -1.324]} scale={0.126} />
         </group>
-        <mesh name="Coins_Final_Chest_0" geometry={nodes.Coins_Final_Chest_0.geometry} material={materials.Final_Chest} position={[0.015, 1.14, -0.026]} rotation={[-1.348, -0.146, -1.324]} scale={0.126} />
       </group>
-    </group>
+    </RigidBody>
   )
 }
 

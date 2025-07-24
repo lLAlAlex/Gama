@@ -1,20 +1,27 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, ArrowRight, ArrowLeft, CheckCircle, Globe, Shield } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Mail,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle,
+  Globe,
+  Shield,
+} from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] },
-}
+};
 
 const staggerContainer = {
   animate: {
@@ -22,24 +29,24 @@ const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 export default function ForgotPasswordPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [emailSent, setEmailSent] = useState(false)
-  const [email, setEmail] = useState("")
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
     // Simulate email sending process
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    setIsLoading(false)
-    setEmailSent(true)
-  }
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+    setEmailSent(true);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen py-16 bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
@@ -49,16 +56,24 @@ export default function ForgotPasswordPage() {
 
       <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Side - Branding */}
-        <motion.div className="hidden lg:block" initial="initial" animate="animate" variants={staggerContainer}>
+        <motion.div
+          className="hidden lg:block"
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+        >
           <motion.div variants={fadeInUp} className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">G</span>
+            <a
+              href="/"
+              className="flex items-center justify-center lg:justify-start space-x-3 mb-8"
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <img src={MoveLeft} alt="arrow"></img>
               </div>
-              <span className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Gama
+              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Back to Home
               </span>
-            </div>
+            </a>
 
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -69,8 +84,8 @@ export default function ForgotPasswordPage() {
             </h1>
 
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-              Don't worry! It happens to the best of us. We'll help you get back to exploring Indonesia's cultural
-              treasures in no time.
+              Don't worry! It happens to the best of us. We'll help you get back
+              to exploring Indonesia's cultural treasures in no time.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -110,7 +125,12 @@ export default function ForgotPasswordPage() {
         </motion.div>
 
         {/* Right Side - Recovery Form */}
-        <motion.div initial="initial" animate="animate" variants={fadeInUp} className="w-full max-w-md mx-auto lg:mx-0">
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={fadeInUp}
+          className="w-full max-w-md mx-auto lg:mx-0"
+        >
           <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-lg">
             <CardHeader className="text-center pb-8">
               <div className="lg:hidden flex items-center justify-center space-x-3 mb-6">
@@ -124,9 +144,12 @@ export default function ForgotPasswordPage() {
 
               {!emailSent ? (
                 <>
-                  <CardTitle className="text-3xl font-bold text-slate-800 mb-2">Forgot Password?</CardTitle>
+                  <CardTitle className="text-3xl font-bold text-slate-800 mb-2">
+                    Forgot Password?
+                  </CardTitle>
                   <p className="text-slate-600">
-                    No worries! Enter your email address and we'll send you a link to reset your password.
+                    No worries! Enter your email address and we'll send you a
+                    link to reset your password.
                   </p>
                 </>
               ) : (
@@ -134,7 +157,9 @@ export default function ForgotPasswordPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-3xl font-bold text-slate-800 mb-2">Check Your Email</CardTitle>
+                  <CardTitle className="text-3xl font-bold text-slate-800 mb-2">
+                    Check Your Email
+                  </CardTitle>
                   <p className="text-slate-600">
                     We've sent a password reset link to <strong>{email}</strong>
                   </p>
@@ -146,7 +171,10 @@ export default function ForgotPasswordPage() {
               {!emailSent ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-slate-700 font-medium">
+                    <Label
+                      htmlFor="email"
+                      className="text-slate-700 font-medium"
+                    >
                       Email Address
                     </Label>
                     <div className="relative">
@@ -163,7 +191,10 @@ export default function ForgotPasswordPage() {
                     </div>
                   </div>
 
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <Button
                       type="submit"
                       className="w-full h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg"
@@ -199,11 +230,14 @@ export default function ForgotPasswordPage() {
                     </p>
                   </div>
 
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <Button
                       onClick={() => {
-                        setEmailSent(false)
-                        setEmail("")
+                        setEmailSent(false);
+                        setEmail("");
                       }}
                       variant="outline"
                       className="w-full h-12 border-slate-200 hover:bg-slate-50"
@@ -228,7 +262,10 @@ export default function ForgotPasswordPage() {
               <div className="text-center pt-4 border-t border-slate-200">
                 <p className="text-slate-600 text-sm">
                   Don't have an account?{" "}
-                  <a href="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                  <a
+                    href="/register"
+                    className="text-indigo-600 hover:text-indigo-700 font-medium"
+                  >
                     Sign up here
                   </a>
                 </p>
@@ -238,5 +275,5 @@ export default function ForgotPasswordPage() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

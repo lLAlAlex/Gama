@@ -68,7 +68,7 @@ export default function HeritageBooksPage() {
       region: "East Java",
       rarity: "legendary",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Keris",
+      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Keris",
       description: "A sacred ceremonial dagger with intricate patterns and spiritual significance.",
       history:
         "The Keris originated in the Majapahit Kingdom during the 13th century. This particular piece features the distinctive wavy blade known as 'luk' and was crafted by master smiths using traditional techniques passed down through generations.",
@@ -87,7 +87,7 @@ export default function HeritageBooksPage() {
       region: "Central Java",
       rarity: "rare",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Batik",
+      image: "/Images/Item/batik-parang-rusak.png?height=200&width=200&text=Batik",
       description: "Traditional batik pattern reserved for Javanese royalty, featuring diagonal knife-like motifs.",
       history:
         "The Parang Rusak pattern was exclusively worn by the Sultan and his family in the Yogyakarta and Surakarta palaces. The pattern symbolizes strength, bravery, and the continuous struggle against evil.",
@@ -104,7 +104,7 @@ export default function HeritageBooksPage() {
       region: "Central Java",
       rarity: "uncommon",
       discovered: false,
-      image: "/placeholder.svg?height=200&width=200&text=Gamelan",
+      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Gamelan",
       description: "The largest gong in a traditional Gamelan orchestra, producing deep, resonant tones.",
       history:
         "Gamelan orchestras have been part of Javanese culture for over 1,000 years. The Gong Ageng serves as the foundation of the ensemble, marking important structural points in the music.",
@@ -121,7 +121,7 @@ export default function HeritageBooksPage() {
       region: "West Sumatra",
       rarity: "rare",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Rumah+Gadang",
+      image: "/Images/Item/rumah-minangkabau.png?height=200&width=200&text=Rumah+Gadang",
       description: "Traditional Minangkabau house with distinctive curved roof resembling buffalo horns.",
       history:
         "Rumah Gadang has been the traditional house of the Minangkabau people for centuries. The distinctive roof design is inspired by the horns of the water buffalo, which holds special significance in Minangkabau culture.",
@@ -140,7 +140,7 @@ export default function HeritageBooksPage() {
       region: "Central Java",
       rarity: "uncommon",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Wayang",
+      image: "/Images/Item/wayang-kulit.png?height=200&width=200&text=Wayang",
       description: "Traditional shadow puppet representing the hero Arjuna from the Mahabharata epic.",
       history:
         "Wayang Kulit has been performed in Java for over 1,000 years, combining Hindu-Buddhist mythology with Islamic and Javanese philosophy. This Arjuna puppet represents one of the most beloved characters in Javanese culture.",
@@ -159,7 +159,7 @@ export default function HeritageBooksPage() {
       region: "South Sumatra",
       rarity: "rare",
       discovered: false,
-      image: "/placeholder.svg?height=200&width=200&text=Songket",
+      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Songket",
       description: "Luxurious hand-woven fabric with gold and silver threads, worn by Palembang royalty.",
       history:
         "Songket weaving in Palembang dates back to the 16th century during the Sultanate era. The intricate patterns and use of precious metals made it a symbol of wealth and status.",
@@ -320,7 +320,7 @@ export default function HeritageBooksPage() {
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center">
                     {item.discovered ? (
                       <img
-                        src={item.image || "/placeholder.svg"}
+                        src={item.image || "/Images/Item/keris-majapahit.png"}
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />
@@ -384,7 +384,7 @@ export default function HeritageBooksPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl overflow-hidden">
                       <img
-                        src={selectedItem.image || "/placeholder.svg"}
+                        src={selectedItem.image || "/Images/Item/keris-majapahit.png"}
                         alt={selectedItem.name}
                         className="w-full h-full object-cover"
                       />

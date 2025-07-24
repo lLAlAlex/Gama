@@ -3,7 +3,7 @@ import React from "react";
 import { Environment, OrthographicCamera } from "@react-three/drei";
 // import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Tugu } from "./models/Tugu";
 import { Physics } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
@@ -21,6 +21,14 @@ const ProximityManager = ({ chestPosition, interactionDist }) => {
   const playerVec3 = useRef(new THREE.Vector3());
 
   useFrame(() => {
+    if (!chestPosition) {
+      if (wasNear.current) {
+        setIsNearChest(false);
+        wasNear.current = false;
+      }
+      return;
+    }
+
     if (playerPosition) {
         playerVec3.current.set(playerPosition.x, playerPosition.y, playerPosition.z);
     }
@@ -32,8 +40,7 @@ const ProximityManager = ({ chestPosition, interactionDist }) => {
 
     if (isNowNear !== wasNear.current) {
       // console.log(
-      //   `%cProximity status changed: Player is now ${isNowNear ? 'NEAR' : 'FAR'}`, 
-      //   'color: yellow; font-weight: bold; font-size: 14px;'
+      //   `%cProximity status changed: Player is now ${isNowNear ? 'NEAR' : 'FAR'}`
       // );
       setIsNearChest(isNowNear);
       wasNear.current = isNowNear;
@@ -43,10 +50,41 @@ const ProximityManager = ({ chestPosition, interactionDist }) => {
   return null;
 };
 
+const ChestSpawner = () => {
+    const spawnChest = useGameStore((state) => state.spawnChest);
+
+    useEffect(() => {
+        const spawnInterval = setInterval(() => {
+          if (useGameStore.getState().chestPosition) {
+            return;
+          }
+          if (Math.random() < 0.3) {
+            console.log("Spawning a new chest!");
+            const playerPos = useGameStore.getState().playerPosition;
+            
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 0.5 + Math.random() * 1.25; 
+            
+            const spawnPos = new THREE.Vector3(
+              playerPos.x + Math.sin(angle) * distance,
+              0,
+              playerPos.z + Math.cos(angle) * distance
+            );
+            
+            spawnChest(spawnPos);
+          }
+        }, 5000);
+    
+        return () => clearInterval(spawnInterval);
+      }, [spawnChest]);
+
+      return null;
+}
+
 export const Experience = () => {
   const shadowCameraRef = useRef();
-  const INTERACTION_DIST = 0.5
-  const chestPos = new THREE.Vector3(1, 0, 0)
+  const INTERACTION_DIST = 1
+  const chestPosition = useGameStore((state) => state.chestPosition);
 
   return (
     <>
@@ -79,12 +117,20 @@ export const Experience = () => {
         />
         <CharacterController />
         <Tugu scale={0.5} position={[1, 0, 2]} />
-        <Chest scale={0.5} position={chestPos} />
+        
+        {chestPosition && (
+          <Chest 
+            key={`${chestPosition.x}-${chestPosition.z}`} 
+            scale={0.5} 
+            position={chestPosition} 
+          />
+        )}
 
-        <ProximityManager 
-          chestPosition={chestPos}
-          interactionDist={INTERACTION_DIST} 
+        <ProximityManager
+          chestPosition={chestPosition}
+          interactionDist={INTERACTION_DIST}
         />
+        <ChestSpawner />
       </Physics>
     </>
   );

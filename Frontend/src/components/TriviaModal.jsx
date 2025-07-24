@@ -57,7 +57,7 @@ const explanationStyle = {
 
 
 export const TriviaModal = () => {
-  const { isTriviaModalOpen, currentTrivia, closeTriviaModal, openChest } = useGameStore();
+  const { isTriviaModalOpen, currentTrivia, closeTriviaModal, openChest, despawnChest } = useGameStore();
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
@@ -71,9 +71,10 @@ export const TriviaModal = () => {
     setIsAnswered(true);
 
     if (option === currentTrivia.correctAnswer) {
+      openChest();
       setTimeout(() => {
-        openChest();
         handleClose();
+        despawnChest(); 
       }, 2500);
     } else {
       setTimeout(handleClose, 2500);

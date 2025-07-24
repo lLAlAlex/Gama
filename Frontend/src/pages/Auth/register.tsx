@@ -23,6 +23,7 @@ import {
   Sparkles,
   CheckCircle,
 } from "lucide-react"
+import MoveLeft from "@/assets/move-left.svg"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -82,14 +83,14 @@ export default function RegisterPage() {
         {/* Left Side - Branding */}
         <motion.div className="hidden lg:block" initial="initial" animate="animate" variants={staggerContainer}>
           <motion.div variants={fadeInUp} className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">G</span>
+            <a href="/" className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <img src={MoveLeft} alt="arrow"></img>
               </div>
-              <span className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Gama
+              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Back to Home
               </span>
-            </div>
+            </a>
 
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">

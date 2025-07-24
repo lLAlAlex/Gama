@@ -76,7 +76,7 @@ This project includes a standalone 3D demo built with Three.js to prototype the 
 * **Frontend**: [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
 * **3D Demo**: [Three.js](https://threejs.org/)
 * **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-* **Database**: NoSQL Document-Based (e.g., [MongoDB](https://www.mongodb.com/docs/))
+* **Database**: [MongoDB](https://www.mongodb.com/docs/)
 
 ## 🤝 Contributing
 

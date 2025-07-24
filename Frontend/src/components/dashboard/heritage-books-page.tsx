@@ -24,23 +24,49 @@ import {
   Utensils,
   Lock,
   Eye,
+  Volume2,
+  VolumeX,
 } from "lucide-react"
 
 interface HeritageItem {
   id: string
-  name: string
+  name: {
+    en: string
+    id: string
+  }
   category: string
-  region: string
+  region: {
+    en: string
+    id: string
+  }
   rarity: "common" | "uncommon" | "rare" | "legendary"
   discovered: boolean
   image: string
-  description: string
-  history: string
-  culturalSignificance: string
-  materials: string[]
-  period: string
+  description: {
+    en: string
+    id: string
+  }
+  history: {
+    en: string
+    id: string
+  }
+  culturalSignificance: {
+    en: string
+    id: string
+  }
+  materials: {
+    en: string[]
+    id: string[]
+  }
+  period: {
+    en: string
+    id: string
+  }
   relatedItems: string[]
-  discoveryLocation?: string
+  discoveryLocation?: {
+    en: string
+    id: string
+  }
   discoveryDate?: string
 }
 
@@ -48,6 +74,9 @@ export default function HeritageBooksPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedItem, setSelectedItem] = useState<HeritageItem | null>(null)
+  // const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [currentLanguage, setCurrentLanguage] = useState<"en" | "id">("en")
+  const [isSpeaking, setIsSpeaking] = useState(false)
 
   const categories = [
     { id: "all", name: "All Items", icon: <BookOpen className="h-4 w-4" />, count: 156 },
@@ -63,110 +92,233 @@ export default function HeritageBooksPage() {
   const heritageItems: HeritageItem[] = [
     {
       id: "keris-001",
-      name: "Keris Majapahit",
+      name: {
+        en: "Keris Majapahit",
+        id: "Keris Majapahit",
+      },
       category: "weapons",
-      region: "East Java",
+      region: {
+        en: "East Java",
+        id: "Jawa Timur",
+      },
       rarity: "legendary",
       discovered: true,
-      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Keris",
-      description: "A sacred ceremonial dagger with intricate patterns and spiritual significance.",
-      history:
-        "The Keris originated in the Majapahit Kingdom during the 13th century. This particular piece features the distinctive wavy blade known as 'luk' and was crafted by master smiths using traditional techniques passed down through generations.",
-      culturalSignificance:
-        "In Javanese culture, the Keris is more than just a weapon - it's a spiritual object believed to possess mystical powers. It represents the owner's status, spiritual strength, and connection to ancestors.",
-      materials: ["Damascus steel", "Gold inlay", "Sacred wood handle", "Precious stones"],
-      period: "13th-15th Century",
+      image: "/placeholder.svg?height=200&width=200&text=Keris",
+      description: {
+        en: "A sacred ceremonial dagger with intricate patterns and spiritual significance.",
+        id: "Belati upacara suci dengan pola rumit dan makna spiritual yang mendalam.",
+      },
+      history: {
+        en: "The Keris originated in the Majapahit Kingdom during the 13th century. This particular piece features the distinctive wavy blade known as 'luk' and was crafted by master smiths using traditional techniques passed down through generations.",
+        id: "Keris berasal dari Kerajaan Majapahit pada abad ke-13. Karya khusus ini menampilkan bilah bergelombang khas yang dikenal sebagai 'luk' dan dibuat oleh pandai besi ahli menggunakan teknik tradisional yang diwariskan turun-temurun.",
+      },
+      culturalSignificance: {
+        en: "In Javanese culture, the Keris is more than just a weapon - it's a spiritual object believed to possess mystical powers. It represents the owner's status, spiritual strength, and connection to ancestors.",
+        id: "Dalam budaya Jawa, Keris lebih dari sekadar senjata - ini adalah objek spiritual yang dipercaya memiliki kekuatan mistis. Keris melambangkan status pemilik, kekuatan spiritual, dan hubungan dengan leluhur.",
+      },
+      materials: {
+        en: ["Damascus steel", "Gold inlay", "Sacred wood handle", "Precious stones"],
+        id: ["Baja Damascus", "Tatahan emas", "Gagang kayu suci", "Batu mulia"],
+      },
+      period: {
+        en: "13th-15th Century",
+        id: "Abad ke-13 hingga ke-15",
+      },
       relatedItems: ["keris-002", "javanese-crown"],
-      discoveryLocation: "Trowulan Archaeological Site",
+      discoveryLocation: {
+        en: "Trowulan Archaeological Site",
+        id: "Situs Arkeologi Trowulan",
+      },
       discoveryDate: "2024-01-15",
     },
     {
       id: "batik-001",
-      name: "Batik Parang Rusak",
+      name: {
+        en: "Batik Parang Rusak",
+        id: "Batik Parang Rusak",
+      },
       category: "clothing",
-      region: "Central Java",
+      region: {
+        en: "Central Java",
+        id: "Jawa Tengah",
+      },
       rarity: "rare",
       discovered: true,
-      image: "/Images/Item/batik-parang-rusak.png?height=200&width=200&text=Batik",
-      description: "Traditional batik pattern reserved for Javanese royalty, featuring diagonal knife-like motifs.",
-      history:
-        "The Parang Rusak pattern was exclusively worn by the Sultan and his family in the Yogyakarta and Surakarta palaces. The pattern symbolizes strength, bravery, and the continuous struggle against evil.",
-      culturalSignificance:
-        "This sacred pattern represents the eternal struggle between good and evil, with the diagonal lines symbolizing the flow of life and the knife-like shapes representing strength in adversity.",
-      materials: ["Hand-woven cotton", "Natural indigo dye", "Sogan brown dye", "Wax resist"],
-      period: "17th-19th Century",
+      image: "/placeholder.svg?height=200&width=200&text=Batik",
+      description: {
+        en: "Traditional batik pattern reserved for Javanese royalty, featuring diagonal knife-like motifs.",
+        id: "Pola batik tradisional yang dikhususkan untuk bangsawan Jawa, menampilkan motif diagonal seperti pisau.",
+      },
+      history: {
+        en: "The Parang Rusak pattern was exclusively worn by the Sultan and his family in the Yogyakarta and Surakarta palaces. The pattern symbolizes strength, bravery, and the continuous struggle against evil.",
+        id: "Pola Parang Rusak secara eksklusif dikenakan oleh Sultan dan keluarganya di istana Yogyakarta dan Surakarta. Pola ini melambangkan kekuatan, keberanian, dan perjuangan berkelanjutan melawan kejahatan.",
+      },
+      culturalSignificance: {
+        en: "This sacred pattern represents the eternal struggle between good and evil, with the diagonal lines symbolizing the flow of life and the knife-like shapes representing strength in adversity.",
+        id: "Pola suci ini mewakili perjuangan abadi antara kebaikan dan kejahatan, dengan garis diagonal melambangkan aliran kehidupan dan bentuk seperti pisau mewakili kekuatan dalam kesulitan.",
+      },
+      materials: {
+        en: ["Hand-woven cotton", "Natural indigo dye", "Sogan brown dye", "Wax resist"],
+        id: ["Katun tenun tangan", "Pewarna indigo alami", "Pewarna coklat sogan", "Lilin penahan"],
+      },
+      period: {
+        en: "17th-19th Century",
+        id: "Abad ke-17 hingga ke-19",
+      },
       relatedItems: ["batik-002", "javanese-crown"],
     },
     {
       id: "gamelan-001",
-      name: "Gamelan Gong Ageng",
+      name: {
+        en: "Gamelan Gong Ageng",
+        id: "Gamelan Gong Ageng",
+      },
       category: "instruments",
-      region: "Central Java",
+      region: {
+        en: "Central Java",
+        id: "Jawa Tengah",
+      },
       rarity: "uncommon",
       discovered: false,
-      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Gamelan",
-      description: "The largest gong in a traditional Gamelan orchestra, producing deep, resonant tones.",
-      history:
-        "Gamelan orchestras have been part of Javanese culture for over 1,000 years. The Gong Ageng serves as the foundation of the ensemble, marking important structural points in the music.",
-      culturalSignificance:
-        "The Gong Ageng is considered the most sacred instrument in the Gamelan ensemble, often believed to house spirits and requiring special ceremonies before being played.",
-      materials: ["Bronze alloy", "Brass", "Traditional wood frame", "Rope bindings"],
-      period: "8th Century - Present",
+      image: "/placeholder.svg?height=200&width=200&text=Gamelan",
+      description: {
+        en: "The largest gong in a traditional Gamelan orchestra, producing deep, resonant tones.",
+        id: "Gong terbesar dalam orkestra Gamelan tradisional, menghasilkan nada yang dalam dan bergema.",
+      },
+      history: {
+        en: "Gamelan orchestras have been part of Javanese culture for over 1,000 years. The Gong Ageng serves as the foundation of the ensemble, marking important structural points in the music.",
+        id: "Orkestra Gamelan telah menjadi bagian dari budaya Jawa selama lebih dari 1.000 tahun. Gong Ageng berfungsi sebagai fondasi ansambel, menandai titik-titik struktural penting dalam musik.",
+      },
+      culturalSignificance: {
+        en: "The Gong Ageng is considered the most sacred instrument in the Gamelan ensemble, often believed to house spirits and requiring special ceremonies before being played.",
+        id: "Gong Ageng dianggap sebagai instrumen paling suci dalam ansambel Gamelan, sering dipercaya sebagai tempat tinggal roh dan memerlukan upacara khusus sebelum dimainkan.",
+      },
+      materials: {
+        en: ["Bronze alloy", "Brass", "Traditional wood frame", "Rope bindings"],
+        id: ["Paduan perunggu", "Kuningan", "Rangka kayu tradisional", "Ikatan tali"],
+      },
+      period: {
+        en: "8th Century - Present",
+        id: "Abad ke-8 - Sekarang",
+      },
       relatedItems: ["gamelan-002", "gamelan-003"],
     },
     {
       id: "rumah-gadang",
-      name: "Rumah Gadang Miniature",
+      name: {
+        en: "Rumah Gadang Miniature",
+        id: "Miniatur Rumah Gadang",
+      },
       category: "architecture",
-      region: "West Sumatra",
+      region: {
+        en: "West Sumatra",
+        id: "Sumatera Barat",
+      },
       rarity: "rare",
       discovered: true,
-      image: "/Images/Item/rumah-minangkabau.png?height=200&width=200&text=Rumah+Gadang",
-      description: "Traditional Minangkabau house with distinctive curved roof resembling buffalo horns.",
-      history:
-        "Rumah Gadang has been the traditional house of the Minangkabau people for centuries. The distinctive roof design is inspired by the horns of the water buffalo, which holds special significance in Minangkabau culture.",
-      culturalSignificance:
-        "The house represents the matrilineal society of the Minangkabau people, where property and family names are passed down through the female line. The curved roof symbolizes the horns of the victorious buffalo in their legendary battle.",
-      materials: ["Tropical hardwood", "Palm fiber roof", "Bamboo", "Natural pigments"],
-      period: "16th Century - Present",
+      image: "/placeholder.svg?height=200&width=200&text=Rumah+Gadang",
+      description: {
+        en: "Traditional Minangkabau house with distinctive curved roof resembling buffalo horns.",
+        id: "Rumah tradisional Minangkabau dengan atap melengkung khas yang menyerupai tanduk kerbau.",
+      },
+      history: {
+        en: "Rumah Gadang has been the traditional house of the Minangkabau people for centuries. The distinctive roof design is inspired by the horns of the water buffalo, which holds special significance in Minangkabau culture.",
+        id: "Rumah Gadang telah menjadi rumah tradisional masyarakat Minangkabau selama berabad-abad. Desain atap yang khas terinspirasi dari tanduk kerbau air, yang memiliki makna khusus dalam budaya Minangkabau.",
+      },
+      culturalSignificance: {
+        en: "The house represents the matrilineal society of the Minangkabau people, where property and family names are passed down through the female line. The curved roof symbolizes the horns of the victorious buffalo in their legendary battle.",
+        id: "Rumah ini mewakili masyarakat matrilineal suku Minangkabau, di mana harta dan nama keluarga diwariskan melalui garis keturunan perempuan. Atap melengkung melambangkan tanduk kerbau yang menang dalam pertempuran legendaris mereka.",
+      },
+      materials: {
+        en: ["Tropical hardwood", "Palm fiber roof", "Bamboo", "Natural pigments"],
+        id: ["Kayu keras tropis", "Atap serat kelapa", "Bambu", "Pigmen alami"],
+      },
+      period: {
+        en: "16th Century - Present",
+        id: "Abad ke-16 - Sekarang",
+      },
       relatedItems: ["minang-textile", "buffalo-horn"],
-      discoveryLocation: "Bukittinggi Cultural Center",
+      discoveryLocation: {
+        en: "Bukittinggi Cultural Center",
+        id: "Pusat Budaya Bukittinggi",
+      },
       discoveryDate: "2024-02-20",
     },
     {
       id: "wayang-kulit",
-      name: "Wayang Kulit Arjuna",
+      name: {
+        en: "Wayang Kulit Arjuna",
+        id: "Wayang Kulit Arjuna",
+      },
       category: "crafts",
-      region: "Central Java",
+      region: {
+        en: "Central Java",
+        id: "Jawa Tengah",
+      },
       rarity: "uncommon",
       discovered: true,
-      image: "/Images/Item/wayang-kulit.png?height=200&width=200&text=Wayang",
-      description: "Traditional shadow puppet representing the hero Arjuna from the Mahabharata epic.",
-      history:
-        "Wayang Kulit has been performed in Java for over 1,000 years, combining Hindu-Buddhist mythology with Islamic and Javanese philosophy. This Arjuna puppet represents one of the most beloved characters in Javanese culture.",
-      culturalSignificance:
-        "Wayang performances serve as both entertainment and moral education, teaching values through ancient stories. Arjuna represents the ideal knight - brave, handsome, and spiritually pure.",
-      materials: ["Buffalo hide", "Natural pigments", "Gold leaf", "Bamboo handle"],
-      period: "10th Century - Present",
+      image: "/placeholder.svg?height=200&width=200&text=Wayang",
+      description: {
+        en: "Traditional shadow puppet representing the hero Arjuna from the Mahabharata epic.",
+        id: "Boneka bayangan tradisional yang mewakili pahlawan Arjuna dari epos Mahabharata.",
+      },
+      history: {
+        en: "Wayang Kulit has been performed in Java for over 1,000 years, combining Hindu-Buddhist mythology with Islamic and Javanese philosophy. This Arjuna puppet represents one of the most beloved characters in Javanese culture.",
+        id: "Wayang Kulit telah dipentaskan di Jawa selama lebih dari 1.000 tahun, menggabungkan mitologi Hindu-Buddha dengan filosofi Islam dan Jawa. Boneka Arjuna ini mewakili salah satu karakter yang paling dicintai dalam budaya Jawa.",
+      },
+      culturalSignificance: {
+        en: "Wayang performances serve as both entertainment and moral education, teaching values through ancient stories. Arjuna represents the ideal knight - brave, handsome, and spiritually pure.",
+        id: "Pertunjukan Wayang berfungsi sebagai hiburan dan pendidikan moral, mengajarkan nilai-nilai melalui cerita kuno. Arjuna mewakili ksatria ideal - berani, tampan, dan suci secara spiritual.",
+      },
+      materials: {
+        en: ["Buffalo hide", "Natural pigments", "Gold leaf", "Bamboo handle"],
+        id: ["Kulit kerbau", "Pigmen alami", "Daun emas", "Gagang bambu"],
+      },
+      period: {
+        en: "10th Century - Present",
+        id: "Abad ke-10 - Sekarang",
+      },
       relatedItems: ["wayang-002", "gamelan-001"],
-      discoveryLocation: "Yogyakarta Palace",
+      discoveryLocation: {
+        en: "Yogyakarta Palace",
+        id: "Keraton Yogyakarta",
+      },
       discoveryDate: "2024-01-28",
     },
     {
       id: "songket-001",
-      name: "Songket Palembang",
+      name: {
+        en: "Songket Palembang",
+        id: "Songket Palembang",
+      },
       category: "clothing",
-      region: "South Sumatra",
+      region: {
+        en: "South Sumatra",
+        id: "Sumatera Selatan",
+      },
       rarity: "rare",
       discovered: false,
-      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Songket",
-      description: "Luxurious hand-woven fabric with gold and silver threads, worn by Palembang royalty.",
-      history:
-        "Songket weaving in Palembang dates back to the 16th century during the Sultanate era. The intricate patterns and use of precious metals made it a symbol of wealth and status.",
-      culturalSignificance:
-        "Songket represents the pinnacle of Indonesian textile art, with each pattern carrying deep meaning related to nature, philosophy, and social status. It's essential for traditional ceremonies and royal occasions.",
-      materials: ["Silk threads", "Gold threads", "Silver threads", "Natural dyes"],
-      period: "16th Century - Present",
+      image: "/placeholder.svg?height=200&width=200&text=Songket",
+      description: {
+        en: "Luxurious hand-woven fabric with gold and silver threads, worn by Palembang royalty.",
+        id: "Kain tenun mewah dengan benang emas dan perak, dikenakan oleh bangsawan Palembang.",
+      },
+      history: {
+        en: "Songket weaving in Palembang dates back to the 16th century during the Sultanate era. The intricate patterns and use of precious metals made it a symbol of wealth and status.",
+        id: "Tenun Songket di Palembang berasal dari abad ke-16 pada era Kesultanan. Pola rumit dan penggunaan logam mulia menjadikannya simbol kekayaan dan status.",
+      },
+      culturalSignificance: {
+        en: "Songket represents the pinnacle of Indonesian textile art, with each pattern carrying deep meaning related to nature, philosophy, and social status. It's essential for traditional ceremonies and royal occasions.",
+        id: "Songket mewakili puncak seni tekstil Indonesia, dengan setiap pola membawa makna mendalam yang berkaitan dengan alam, filosofi, dan status sosial. Ini penting untuk upacara tradisional dan acara kerajaan.",
+      },
+      materials: {
+        en: ["Silk threads", "Gold threads", "Silver threads", "Natural dyes"],
+        id: ["Benang sutra", "Benang emas", "Benang perak", "Pewarna alami"],
+      },
+      period: {
+        en: "16th Century - Present",
+        id: "Abad ke-16 - Sekarang",
+      },
       relatedItems: ["palembang-crown", "traditional-jewelry"],
     },
   ]
@@ -203,8 +355,8 @@ export default function HeritageBooksPage() {
 
   const filteredItems = heritageItems.filter((item) => {
     const matchesSearch =
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.region.toLowerCase().includes(searchTerm.toLowerCase())
+      item.name[currentLanguage].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.region[currentLanguage].toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === "all" || item.category === selectedCategory
     return matchesSearch && matchesCategory
   })
@@ -212,6 +364,31 @@ export default function HeritageBooksPage() {
   const discoveredCount = heritageItems.filter((item) => item.discovered).length
   const totalCount = heritageItems.length
   const discoveryPercentage = (discoveredCount / totalCount) * 100
+
+  const speakText = (text: string, language: "en" | "id") => {
+    if ("speechSynthesis" in window) {
+      setIsSpeaking(true)
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.lang = language === "en" ? "en-US" : "id-ID"
+      utterance.onend = () => setIsSpeaking(false)
+      speechSynthesis.speak(utterance)
+    }
+  }
+
+  const stopSpeaking = () => {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel()
+      setIsSpeaking(false)
+    }
+  }
+
+  const getItemText = (
+    item: HeritageItem,
+    field: keyof Pick<HeritageItem, "description" | "history" | "culturalSignificance">,
+    language: "en" | "id",
+  ) => {
+    return item[field][language]
+  }
 
   return (
     <div className="space-y-8">
@@ -234,6 +411,33 @@ export default function HeritageBooksPage() {
             <div className="text-red-200 text-sm">Items Discovered</div>
             <Progress value={discoveryPercentage} className="w-32 mt-2" />
           </div>
+        </div>
+      </motion.div>
+
+      {/* Language Toggle */}
+      <motion.div
+        className="flex justify-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className="bg-white rounded-lg p-1 border border-red-200 shadow-sm">
+          <Button
+            variant={currentLanguage === "en" ? "default" : "ghost"}
+            size="sm"
+            onClick={() => setCurrentLanguage("en")}
+            className={currentLanguage === "en" ? "bg-red-500 hover:bg-red-600" : "hover:bg-red-50"}
+          >
+            English
+          </Button>
+          <Button
+            variant={currentLanguage === "id" ? "default" : "ghost"}
+            size="sm"
+            onClick={() => setCurrentLanguage("id")}
+            className={currentLanguage === "id" ? "bg-red-500 hover:bg-red-600" : "hover:bg-red-50"}
+          >
+            Bahasa Indonesia
+          </Button>
         </div>
       </motion.div>
 
@@ -320,8 +524,8 @@ export default function HeritageBooksPage() {
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center">
                     {item.discovered ? (
                       <img
-                        src={item.image || "/Images/Item/keris-majapahit.png"}
-                        alt={item.name}
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.name[currentLanguage]}
                         className="w-full h-full object-cover"
                       />
                     ) : (
@@ -345,14 +549,16 @@ export default function HeritageBooksPage() {
                   )}
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="font-bold text-gray-800 mb-2 truncate">{item.discovered ? item.name : "???"}</h3>
+                  <h3 className="font-bold text-gray-800 mb-2 truncate">
+                    {item.discovered ? item.name[currentLanguage] : "???"}
+                  </h3>
                   <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
                     <MapPin className="h-3 w-3" />
-                    {item.discovered ? item.region : "Unknown Region"}
+                    {item.discovered ? item.region[currentLanguage] : "Unknown Region"}
                   </div>
                   <p className="text-sm text-gray-600 line-clamp-2">
                     {item.discovered
-                      ? item.description
+                      ? item.description[currentLanguage]
                       : "Discover this item to learn more about its history and significance."}
                   </p>
                 </CardContent>
@@ -370,22 +576,46 @@ export default function HeritageBooksPage() {
               <DialogHeader>
                 <DialogTitle className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-gray-800">
-                    {selectedItem.discovered ? selectedItem.name : "Undiscovered Item"}
+                    {selectedItem.discovered ? selectedItem.name[currentLanguage] : "Undiscovered Item"}
                   </span>
-                  <Badge className={`${getRarityColor(selectedItem.rarity)} border`}>
-                    {getRarityIcon(selectedItem.rarity)} {selectedItem.rarity}
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge className={`${getRarityColor(selectedItem.rarity)} border`}>
+                      {getRarityIcon(selectedItem.rarity)} {selectedItem.rarity}
+                    </Badge>
+                  </div>
                 </DialogTitle>
               </DialogHeader>
 
               {selectedItem.discovered ? (
                 <div className="space-y-6">
+                  {/* Language Toggle for Modal */}
+                  <div className="flex justify-center">
+                    <div className="bg-gray-100 rounded-lg p-1">
+                      <Button
+                        variant={currentLanguage === "en" ? "default" : "ghost"}
+                        size="sm"
+                        onClick={() => setCurrentLanguage("en")}
+                        className={currentLanguage === "en" ? "bg-red-500 hover:bg-red-600" : "hover:bg-red-50"}
+                      >
+                        English
+                      </Button>
+                      <Button
+                        variant={currentLanguage === "id" ? "default" : "ghost"}
+                        size="sm"
+                        onClick={() => setCurrentLanguage("id")}
+                        className={currentLanguage === "id" ? "bg-red-500 hover:bg-red-600" : "hover:bg-red-50"}
+                      >
+                        Bahasa Indonesia
+                      </Button>
+                    </div>
+                  </div>
+
                   {/* Image and Basic Info */}
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl overflow-hidden">
                       <img
-                        src={selectedItem.image || "/Images/Item/keris-majapahit.png"}
-                        alt={selectedItem.name}
+                        src={selectedItem.image || "/placeholder.svg"}
+                        alt={selectedItem.name[currentLanguage]}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -395,16 +625,17 @@ export default function HeritageBooksPage() {
                         <div className="space-y-2 text-sm">
                           <div className="flex items-center gap-2">
                             <MapPin className="h-4 w-4 text-red-500" />
-                            <span className="font-medium">Region:</span> {selectedItem.region}
+                            <span className="font-medium">Region:</span> {selectedItem.region[currentLanguage]}
                           </div>
                           <div className="flex items-center gap-2">
                             <Calendar className="h-4 w-4 text-red-500" />
-                            <span className="font-medium">Period:</span> {selectedItem.period}
+                            <span className="font-medium">Period:</span> {selectedItem.period[currentLanguage]}
                           </div>
                           {selectedItem.discoveryLocation && (
                             <div className="flex items-center gap-2">
                               <Star className="h-4 w-4 text-red-500" />
-                              <span className="font-medium">Discovered at:</span> {selectedItem.discoveryLocation}
+                              <span className="font-medium">Discovered at:</span>{" "}
+                              {selectedItem.discoveryLocation[currentLanguage]}
                             </div>
                           )}
                         </div>
@@ -413,7 +644,7 @@ export default function HeritageBooksPage() {
                       <div>
                         <h3 className="font-semibold text-gray-800 mb-2">Materials</h3>
                         <div className="flex flex-wrap gap-2">
-                          {selectedItem.materials.map((material, index) => (
+                          {selectedItem.materials[currentLanguage].map((material, index) => (
                             <Badge key={index} variant="outline" className="border-red-200 text-red-700">
                               {material}
                             </Badge>
@@ -446,13 +677,129 @@ export default function HeritageBooksPage() {
                       </TabsTrigger>
                     </TabsList>
                     <TabsContent value="description" className="mt-4">
-                      <p className="text-gray-700 leading-relaxed">{selectedItem.description}</p>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold">Description</h4>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "description", "en"), "en")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              English TTS
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "description", "id"), "id")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              Indonesian TTS
+                            </Button>
+                            {isSpeaking && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={stopSpeaking}
+                                className="border-red-200 text-red-600 hover:bg-red-50 bg-transparent"
+                              >
+                                <VolumeX className="h-4 w-4" />
+                                Stop
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{selectedItem.description[currentLanguage]}</p>
+                      </div>
                     </TabsContent>
                     <TabsContent value="history" className="mt-4">
-                      <p className="text-gray-700 leading-relaxed">{selectedItem.history}</p>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold">History</h4>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "history", "en"), "en")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              English TTS
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "history", "id"), "id")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              Indonesian TTS
+                            </Button>
+                            {isSpeaking && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={stopSpeaking}
+                                className="border-red-200 text-red-600 hover:bg-red-50 bg-transparent"
+                              >
+                                <VolumeX className="h-4 w-4" />
+                                Stop
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{selectedItem.history[currentLanguage]}</p>
+                      </div>
                     </TabsContent>
                     <TabsContent value="significance" className="mt-4">
-                      <p className="text-gray-700 leading-relaxed">{selectedItem.culturalSignificance}</p>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold">Cultural Significance</h4>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "culturalSignificance", "en"), "en")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              English TTS
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => speakText(getItemText(selectedItem, "culturalSignificance", "id"), "id")}
+                              disabled={isSpeaking}
+                              className="border-red-200 text-red-600 hover:bg-red-50"
+                            >
+                              {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                              Indonesian TTS
+                            </Button>
+                            {isSpeaking && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={stopSpeaking}
+                                className="border-red-200 text-red-600 hover:bg-red-50 bg-transparent"
+                              >
+                                <VolumeX className="h-4 w-4" />
+                                Stop
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">
+                          {selectedItem.culturalSignificance[currentLanguage]}
+                        </p>
+                      </div>
                     </TabsContent>
                   </Tabs>
                 </div>

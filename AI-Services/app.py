@@ -4,7 +4,9 @@ import uuid
 from flask import Flask, request, jsonify, render_template, send_file, after_this_request
 from dotenv import load_dotenv
 from flask_cors import CORS
-from TTS.main import synthesize_text
+
+# from gtts import gTTS
+# from TTS.main import synthesize_text
 
 load_dotenv()
 
@@ -44,37 +46,57 @@ def chat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/synthesize', methods=['POST'])
-def handle_synthesis():
-    data = request.get_json()
-    if not data or 'text' not in data or not data['text'].strip():
-        return jsonify({"error": "Request must include non-empty 'text' in JSON body"}), 400
+# @app.route('/api/synthesize', methods=['POST'])
+# def handle_synthesis():
+#     data = request.get_json()
+#     if not data or 'text' not in data or not data['text'].strip():
+#         return jsonify({"error": "Request must include non-empty 'text' in JSON body"}), 400
 
-    text_to_synthesize = data['text']
+#     text_to_synthesize = data['text']
     
-    temp_dir = 'temp_audio'
-    os.makedirs(temp_dir, exist_ok=True)
+#     temp_dir = 'temp_audio'
+#     os.makedirs(temp_dir, exist_ok=True)
     
-    output_filename = os.path.join(temp_dir, f"{uuid.uuid4()}.wav")
+#     output_filename = os.path.join(temp_dir, f"{uuid.uuid4()}.wav")
 
-    try:
-        synthesize_text(text_to_synthesize, output_filename)
+#     try:
+#         synthesize_text(text_to_synthesize, output_filename)
 
-        @after_this_request
-        def cleanup(response):
-            """ Deletes the temporary file after the request is sent. """
-            try:
-                os.remove(output_filename)
-                print(f"Cleaned up temporary file: {output_filename}")
-            except OSError as e:
-                print(f"Error removing file {output_filename}: {e}")
-            return response
+#         @after_this_request
+#         def cleanup(response):
+#             """ Deletes the temporary file after the request is sent. """
+#             try:
+#                 os.remove(output_filename)
+#                 print(f"Cleaned up temporary file: {output_filename}")
+#             except OSError as e:
+#                 print(f"Error removing file {output_filename}: {e}")
+#             return response
 
-        return send_file(output_filename, mimetype='audio/wav')
+#         return send_file(output_filename, mimetype='audio/wav')
 
-    except Exception as e:
-        print(f"An error occurred during synthesis: {e}")
-        return jsonify({"error": "Failed to synthesize speech.", "details": str(e)}), 500
+#     except Exception as e:
+#         print(f"An error occurred during synthesis: {e}")
+#         return jsonify({"error": "Failed to synthesize speech.", "details": str(e)}), 500
+
+# @app.route('/tts', methods=['POST'])
+# def tts_api():
+#     text = request.json.get('text', '')
+#     language = request.json.get('lang', 'id')
+    
+#     # Buat objek gTTS
+#     tts = gTTS(text=text, lang=language, slow=False)
+    
+#     # Simpan ke file sementara
+#     filename = "temp_audio.mp3"
+#     tts.save(filename)
+    
+#     # Kirim file sebagai response
+#     return send_file(
+#         filename,
+#         mimetype="audio/mpeg",
+#         as_attachment=True,
+#         download_name="output.mp3"
+#     )
 
 if __name__ == '__main__':
     print("Starting Flask server for local AI models...")

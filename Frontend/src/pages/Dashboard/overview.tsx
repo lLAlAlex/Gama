@@ -12,6 +12,9 @@ import SettingsPage from "@/components/dashboard/settings"
 import HeritageBooksPage from "@/components/dashboard/heritage-books-page"
 import PlayPage from "@/components/dashboard/play-page"
 import ShopPage from "@/components/dashboard/shop-page"
+import CraftPage from "@/components/dashboard/craft-page"
+import AchievementsPage from "@/components/dashboard/achievements-page"
+import InventoryPage from "@/components/dashboard/inventory-page"
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -70,41 +73,11 @@ export default function Dashboard() {
       case "heritage":
         return <HeritageBooksPage />
       case "inventory":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Inventory</h2>
-            <p className="text-gray-600">Manage your collected artifacts and resources.</p>
-          </motion.div>
-        )
+        return <InventoryPage />
       case "crafts":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Crafts</h2>
-            <p className="text-gray-600">Create traditional Indonesian artifacts.</p>
-          </motion.div>
-        )
+        return <CraftPage />
       case "achievements":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Achievements</h2>
-            <p className="text-gray-600">View your exploration milestones and badges.</p>
-          </motion.div>
-        )
+        return <AchievementsPage />
       case "community":
         return (
           <motion.div

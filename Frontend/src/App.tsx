@@ -54,12 +54,12 @@ function App() {
               
             <Route path="/" element={<Layout children={<LandingPage/>}/>} />
 
-            <Route path="*" element={<Layout children={<NotFoundPage/>}/>} />
+            <Route path="*" element={<NotFoundPage/>} />
 
             <Route path="/map" element={<MapPage />} />
 
             {/* Authentication Pages */}
-            
+
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />

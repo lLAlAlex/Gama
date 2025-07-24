@@ -21,6 +21,7 @@ import LoadingScreen from "./pages/Utility/LoadingScreen";
 // Pages
 
 import LandingPage from "@/pages/Landing/page";
+import MapPage from "./pages/Map/page";
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
 
             </Route>
+            <Route path="/map" element={<MapPage />} />
 
           </Routes>
 

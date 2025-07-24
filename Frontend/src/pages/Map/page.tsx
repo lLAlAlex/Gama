@@ -1,34 +1,83 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import React, { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Icon } from "leaflet";
+import { initialMarkers } from "@/lib/data";
 
-const customIcon = new Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-  iconSize: [38, 38],
-});
+interface latlngprop {
+  lat: number;
+  lng: number;
+}
 
-export default function MapPage() {
-  return (
-    <div style={{ position: "relative", height: "100vh", width: "100%" }}>
-      <MapContainer
-        center={[-6.175173679015315, 106.82715894508394]}
-        zoom={13}
-        scrollWheelZoom={false}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker
-          position={[-6.175173679015315, 106.82715894508394]}
-          icon={customIcon}
-        >
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
+interface LatLngProp {
+  lat: number;
+  lng: number;
+  id: number;
+}
+
+function LocationMarker() {
+  const [position, setPosition] = useState<latlngprop | null>(null);
+  const map = useMap();
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
+    }
+
+    const watchId = navigator.geolocation.watchPosition(
+      (pos) => {
+        const latlng = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        };
+        setPosition(latlng);
+        map.flyTo(latlng, 16);
+      },
+      (err) => {
+        console.error("Geolocation error:", err);
+        alert("Unable to retrieve your location");
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 1000,
+        timeout: 10000,
+      }
+    );
+
+    return () => navigator.geolocation.clearWatch(watchId);
+  }, [map]);
+
+  return position === null ? null : (
+    <Marker position={position}>
+      <Popup>You are here</Popup>
+    </Marker>
   );
 }
+
+function App() {
+    const [markers, ] = useState<LatLngProp[]>(initialMarkers);
+
+  return (
+    <MapContainer
+      center={[-6.256594023427226, 106.61834581534255]}
+      zoom={13}
+      scrollWheelZoom={true}
+      style={{ height: "100vh", width: "100vw" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <LocationMarker />
+      {markers.map((marker) => (
+          <Marker key={marker.id} position={[marker.lat, marker.lng]}>
+            <Popup>
+              Marker at [{marker.lat.toFixed(5)}, {marker.lng.toFixed(5)}]
+            </Popup>
+          </Marker>
+        ))}
+    </MapContainer>
+  );
+}
+
+export default App;

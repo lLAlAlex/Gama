@@ -16,6 +16,7 @@ import CraftPage from "@/components/dashboard/craft-page"
 import AchievementsPage from "@/components/dashboard/achievements-page"
 import InventoryPage from "@/components/dashboard/inventory-page"
 import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
+import MemoryPassportPage from "@/components/dashboard/memory-passport-page"
 // import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 
 export default function Dashboard() {
@@ -94,17 +95,8 @@ export default function Dashboard() {
         )
       case "journey":
         return <JourneyRecapPage />
-        // return (
-        //   <motion.div
-        //     className="text-center py-20"
-        //     initial={{ opacity: 0 }}
-        //     animate={{ opacity: 1 }}
-        //     transition={{ duration: 0.5 }}
-        //   >
-        //     <h2 className="text-3xl font-bold text-gray-800 mb-4">Community</h2>
-        //     <p className="text-gray-600">Connect with fellow cultural explorers.</p>
-        //   </motion.div>
-        // )
+      case "memory":
+        return <MemoryPassportPage />
       default:
         return null
     }

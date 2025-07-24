@@ -22,6 +22,7 @@ import {
   Star,
   ChevronLeft,
   Map,
+  IdCard,
 } from "lucide-react"
 
 interface SidebarProps {
@@ -93,9 +94,9 @@ export default function Sidebar({
       badge: null,
     },
     {
-      id: "tes",
-      label: "Tes",
-      icon: <ShoppingBag className="h-5 w-5" />,
+      id: "memory",
+      label: "Memory Card",
+      icon: <IdCard className="h-5 w-5" />,
       color: "from-red-600 to-orange-500",
       badge: "Sale",
     },

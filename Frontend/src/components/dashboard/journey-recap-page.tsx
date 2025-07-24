@@ -199,7 +199,7 @@ const slides = [
 
 export default function JourneyRecapPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
-//   const [isAutoPlaying, setIsAutoPlaying] = useState(false)
+  // const [isAutoPlaying, setIsAutoPlaying] = useState(false)
   const slideRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
@@ -218,8 +218,8 @@ export default function JourneyRecapPage() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "My Cultural Journey 2024",
-          text: `I've explored ${journeyStats.areasVisited} cultural sites and collected ${journeyStats.artifactsCollected} artifacts in my Indonesian heritage journey!`,
+          title: "My Cultural Journey 2024 - Gama",
+          text: `I've explored ${journeyStats.areasVisited} cultural sites and collected ${journeyStats.artifactsCollected} artifacts in my Indonesian heritage journey with Gama!`,
           url: window.location.href,
         })
       } catch (error) {
@@ -227,7 +227,7 @@ export default function JourneyRecapPage() {
       }
     } else {
       // Fallback for browsers that don't support Web Share API
-      const text = `I've explored ${journeyStats.areasVisited} cultural sites and collected ${journeyStats.artifactsCollected} artifacts in my Indonesian heritage journey! Check out my cultural exploration stats.`
+      const text = `I've explored ${journeyStats.areasVisited} cultural sites and collected ${journeyStats.artifactsCollected} artifacts in my Indonesian heritage journey with Gama! Check out my cultural exploration stats.`
       navigator.clipboard.writeText(text)
       alert("Journey stats copied to clipboard!")
     }
@@ -244,13 +244,36 @@ export default function JourneyRecapPage() {
         })
 
         const link = document.createElement("a")
-        link.download = `cultural-journey-2024-slide-${currentSlide + 1}.png`
+        link.download = `gama-cultural-journey-2024-slide-${currentSlide + 1}.png`
         link.href = canvas.toDataURL()
         link.click()
       } catch (error) {
         console.error("Error generating poster:", error)
       }
     }
+  }
+
+  // Gama Watermark Component
+  const GamaWatermark = ({ position = "bottom-right", opacity = 0.7 }: { position?: string; opacity?: number }) => {
+    const positionClasses = {
+      "bottom-right": "bottom-4 right-4",
+      "bottom-left": "bottom-4 left-4",
+      "top-right": "top-4 right-4",
+      "top-left": "top-4 left-4",
+      center: "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+    }
+
+    return (
+      <div className={`absolute ${positionClasses[position as keyof typeof positionClasses]} z-20`} style={{ opacity }}>
+        <div className="flex items-center gap-2 bg-black bg-opacity-30 backdrop-blur-sm rounded-full px-3 py-1.5">
+          <div className="relative">
+            <MapPin className="h-4 w-4 text-white" />
+            <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+          </div>
+          <span className="text-white text-sm font-bold tracking-wide">GAMA</span>
+        </div>
+      </div>
+    )
   }
 
   const renderSlideContent = (slide: any) => {
@@ -278,6 +301,7 @@ export default function JourneyRecapPage() {
                 <p>Your Indonesian Cultural Heritage Journey</p>
               </div>
             </motion.div>
+            <GamaWatermark position="top-right" />
           </div>
         )
 
@@ -316,6 +340,7 @@ export default function JourneyRecapPage() {
                 </div>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -347,6 +372,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">That's like walking from Jakarta to Bandung!</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -387,6 +413,7 @@ export default function JourneyRecapPage() {
                 </div>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -418,6 +445,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">Passion for culture shows in every minute</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -449,6 +477,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">{slide.games} games played total</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -479,6 +508,7 @@ export default function JourneyRecapPage() {
               </div>
               <p className="text-white opacity-75">{slide.description}</p>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -510,6 +540,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">Next level: 2,580 XP to go</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -540,6 +571,7 @@ export default function JourneyRecapPage() {
               </div>
               <p className="text-white opacity-75">{slide.description}</p>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -571,6 +603,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">47 photos taken here</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -602,6 +635,7 @@ export default function JourneyRecapPage() {
                 <p className="text-sm">Indonesian heritage expert level</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -629,6 +663,7 @@ export default function JourneyRecapPage() {
                 <p className="text-white opacity-75 text-sm">Indonesia's cultural heritage awaits your discovery</p>
               </div>
             </motion.div>
+            <GamaWatermark position="bottom-right" />
           </div>
         )
 
@@ -679,7 +714,7 @@ export default function JourneyRecapPage() {
               >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-10">
-                  {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fillRule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fillOpacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div> */}
+                  {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg%3E%3Cg fill=\"none\" fillRule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fillOpacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div> */}
                 </div>
 
                 {/* Slide Content */}
@@ -698,7 +733,7 @@ export default function JourneyRecapPage() {
                 </div>
 
                 {/* Slide Counter */}
-                <div className="absolute top-4 right-4 bg-black bg-opacity-30 rounded-full px-3 py-1">
+                <div className="absolute top-4 right-4 bg-black bg-opacity-30 rounded-full px-3 py-1 z-30">
                   <span className="text-white text-sm font-medium">
                     {currentSlide + 1} / {slides.length}
                   </span>
@@ -728,7 +763,7 @@ export default function JourneyRecapPage() {
               </div>
 
               {/* Slide Indicators */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
                 {slides.map((_, index) => (
                   <button
                     key={index}

@@ -8,9 +8,12 @@ import ActivityChart from "@/components/dashboard/overview/activity-chart"
 import ProgressRings from "@/components/dashboard/overview/progress-rings"
 import RecentActivity from "@/components/dashboard/overview/recent-activity"
 import UserProfileCard from "@/components/dashboard/overview/user-profile-card"
+import SettingsPage from "@/components/dashboard/settings"
+import HeritageBooksPage from "@/components/dashboard/heritage-books-page"
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [activeTab, setActiveTab] = useState("overview")
 
   const renderContent = () => {
@@ -56,6 +59,10 @@ export default function Dashboard() {
             </div>
           </div>
         )
+      case "settings":
+        return <SettingsPage />
+      case "heritage":
+        return <HeritageBooksPage />
       case "play":
         return (
           <motion.div
@@ -66,18 +73,6 @@ export default function Dashboard() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Play Mode</h2>
             <p className="text-gray-600">Start your cultural exploration adventure!</p>
-          </motion.div>
-        )
-      case "heritage":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Heritage Books</h2>
-            <p className="text-gray-600">Explore Indonesian cultural stories and history.</p>
           </motion.div>
         )
       case "inventory":
@@ -140,18 +135,6 @@ export default function Dashboard() {
             <p className="text-gray-600">Connect with fellow cultural explorers.</p>
           </motion.div>
         )
-      case "settings":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Settings</h2>
-            <p className="text-gray-600">Customize your Gama experience.</p>
-          </motion.div>
-        )
       default:
         return null
     }
@@ -160,10 +143,17 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        setIsOpen={setSidebarOpen}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isCollapsed={sidebarCollapsed}
+        setIsCollapsed={setSidebarCollapsed}
+      />
 
       {/* Main Content */}
-      <div className="flex-1 lg:ml-0">
+      <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-72"}`}>
         <main className="p-6 lg:p-8">
           <motion.div
             key={activeTab}

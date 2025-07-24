@@ -10,6 +10,8 @@ import RecentActivity from "@/components/dashboard/overview/recent-activity"
 import UserProfileCard from "@/components/dashboard/overview/user-profile-card"
 import SettingsPage from "@/components/dashboard/settings"
 import HeritageBooksPage from "@/components/dashboard/heritage-books-page"
+import PlayPage from "@/components/dashboard/play-page"
+import ShopPage from "@/components/dashboard/shop-page"
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -59,22 +61,14 @@ export default function Dashboard() {
             </div>
           </div>
         )
+      case "play":
+        return <PlayPage />
+      case "shop":
+        return <ShopPage />
       case "settings":
         return <SettingsPage />
       case "heritage":
         return <HeritageBooksPage />
-      case "play":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Play Mode</h2>
-            <p className="text-gray-600">Start your cultural exploration adventure!</p>
-          </motion.div>
-        )
       case "inventory":
         return (
           <motion.div
@@ -97,18 +91,6 @@ export default function Dashboard() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Crafts</h2>
             <p className="text-gray-600">Create traditional Indonesian artifacts.</p>
-          </motion.div>
-        )
-      case "shop":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Shop</h2>
-            <p className="text-gray-600">Purchase premium items and upgrades.</p>
           </motion.div>
         )
       case "achievements":

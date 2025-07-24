@@ -69,11 +69,12 @@ Make sure you have Node.js and npm installed on your machine.
 This project includes a standalone 3D demo built with Three.js to prototype the map exploration feature.
 
 * Once the development server is running, you can access the demo directly in your browser at:
-    **[http://localhost:5173/demo.html](http://localhost:5173/demo.html)**
+    **[http://localhost:5173/demo](http://localhost:5173/demo)**
 
 ## 🛠️ Technology Stack
 
 * **Frontend**: [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
+* **2D Game**: [React Leaflet](https://react-leaflet.js.org/)
 * **3D Demo**: [Three.js](https://threejs.org/)
 * **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 * **Database**: [MongoDB](https://www.mongodb.com/docs/)

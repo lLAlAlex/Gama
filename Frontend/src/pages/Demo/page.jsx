@@ -6,6 +6,8 @@ import { Experience } from "../../components/demo/GameExperience";
 import Menu from "../../components/MenuScreen";
 import Modal from "../../components/Modal";
 import FloatingButton from "../../components/FloatingButton";
+import { ChestInteraction } from '../../components/ChestInteraction';
+import { TriviaModal } from "../../components/TriviaModal";
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -23,6 +25,8 @@ function DemoPage() {
           <color attach="background" args={["#ececec"]} />
           <Experience />
         </Canvas>
+        <ChestInteraction />
+        <TriviaModal />
       </KeyboardControls>
       <Modal />
       <Menu />

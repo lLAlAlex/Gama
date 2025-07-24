@@ -2,13 +2,14 @@ import React from "react";
 
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { Character } from "./models/Character";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import { useKeyboardControls } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
 import { MathUtils } from "three";
+import { useGameStore } from "../../store/gameStore";
 
 const normalizeAngle = (angle) => {
   while (angle > Math.PI) angle -= 2 * Math.PI;
@@ -59,11 +60,29 @@ export const CharacterController = () => {
   const cameraWorldPosition = useRef(new Vector3());
   const cameraLookAtWorldPosition = useRef(new Vector3());
   const cameraLookAt = useRef(new Vector3());
-  const [, get] = useKeyboardControls();
+  
+  const [subscribeKeys, get] = useKeyboardControls();
+  const setPlayerPosition = useGameStore((state) => state.setPlayerPosition);
+  const openChest = useGameStore((state) => state.openChest);
+
+  useEffect(() => {
+    const unsubscribe = subscribeKeys(
+      (state) => state.interact,
+      (pressed) => {
+        if (pressed) {
+          openChest();
+        }
+      }
+    );
+    return unsubscribe;
+  }, [openChest, subscribeKeys]);
 
   useFrame(({ camera }) => {
     if (rb.current) {
       const vel = rb.current.linvel();
+      const pos = rb.current.translation();
+
+      setPlayerPosition(pos);
 
       const movement = {
         x: 0,

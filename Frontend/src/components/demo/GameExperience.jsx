@@ -3,7 +3,7 @@ import React from "react";
 import { Environment, OrthographicCamera } from "@react-three/drei";
 // import { useControls } from "leva";
 import { useRef } from "react";
-// import { Tugu } from "./models/Tugu";
+import { Tugu } from "./models/Tugu";
 import { Physics } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
 import { MapTiles } from "./models/Map";
@@ -41,7 +41,7 @@ export const Experience = () => {
           WORLD_SCALE={10}
         />
         <CharacterController />
-        {/* <Tugu scale={0.5} position={[1, 0, 2]} /> */}
+        <Tugu scale={0.5} position={[1, 0, 2]} />
       </Physics>
     </>
   );

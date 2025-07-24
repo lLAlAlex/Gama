@@ -1,8 +1,11 @@
-import React from "react";  // Add this line
+import React from "react";
 
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Experience } from "../../components/demo/GameExperience";
+import Menu from "../../components/MenuScreen";
+import Modal from "../../components/Modal";
+import FloatingButton from "../../components/FloatingButton";
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -21,6 +24,9 @@ function DemoPage() {
           <Experience />
         </Canvas>
       </KeyboardControls>
+      <Modal />
+      <Menu />
+      <FloatingButton />
     </div>
   );
 }

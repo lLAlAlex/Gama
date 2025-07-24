@@ -21,6 +21,7 @@ import LoadingScreen from "./pages/Utility/LoadingScreen";
 // Pages
 
 import LandingPage from "@/pages/Landing/page";
+import LoginPage from "@/pages/Login/page";
 import MapPage from "./pages/Map/page";
 
 function App() {
@@ -28,9 +29,6 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-
-    // Providers, Router, Scroll to Top Function and Button, and Custom Cursor
-
     <BrowserRouter>
       <ScrollToTopFunction />
       <ScrollToTop />
@@ -54,6 +52,8 @@ function App() {
 
             </Route>
             <Route path="/map" element={<MapPage />} />
+
+            <Route path="/login" element={<LoginPage />} />
 
           </Routes>
 

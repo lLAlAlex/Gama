@@ -97,7 +97,7 @@ export default function ForgotPasswordPage() {
 
           <motion.div variants={fadeInUp} className="relative">
             <img
-              src="/placeholder.svg?height=400&width=500"
+              src="/Images/logo.png?height=400&width=500"
               alt="Secure Recovery"
               width={500}
               height={400}

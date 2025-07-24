@@ -31,6 +31,10 @@ import LandingPage from "@/pages/Landing/page";
 import MapPage from "./pages/Map/page";
 import DemoPage from "./pages/Demo/page";
 
+// User Dashboard
+
+import Dashboard from "./pages/Dashboard/overview";
+
 function App() {
 
   const [loading, setLoading] = useState(true);
@@ -64,6 +68,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+            {/* Dashboard Pages */}
+
+            <Route path="/dashboard" element={<Dashboard />} />
 
           </Routes>
 

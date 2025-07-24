@@ -1,15 +1,17 @@
-import SiteHeader from "@/components/Navbar";
-import { Outlet } from "react-router";
+import type React from "react"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
-function RootLayout() {
-    return (
-        <>
-            <SiteHeader />
-            <div className="relative flex min-h-svh flex-col bg-background">
-                <Outlet />
-            </div>
-        </>
-    );
+interface LayoutProps {
+  children: React.ReactNode
 }
 
-export default RootLayout;
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1 pt-16 md:pt-20">{children}</main>
+      <Footer />
+    </div>
+  )
+}

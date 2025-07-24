@@ -18,10 +18,16 @@ import ScrollToTopFunction from "./utility/ScrollToTopFunction";
 import NotFoundPage from "./pages/Utility/NotFound404";
 import LoadingScreen from "./pages/Utility/LoadingScreen";
 
+// Authentication Pages
+
+import LoginPage from "@/pages/Auth/login";
+import RegisterPage from "@/pages/Auth/register";
+import ForgotPasswordPage from "@/pages/Auth/forgot-password";
+
 // Pages
 
 import LandingPage from "@/pages/Landing/page";
-import LoginPage from "@/pages/Login/page";
+
 import MapPage from "./pages/Map/page";
 
 function App() {
@@ -43,17 +49,19 @@ function App() {
         {!loading && (
 
           <Routes>
-            
-            <Route path="/" element={<Layout />}>
+
               
-                <Route index element={<LandingPage/>} />
+            <Route path="/" element={<Layout children={<LandingPage/>}/>} />
 
-                <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<Layout children={<NotFoundPage/>}/>} />
 
-            </Route>
             <Route path="/map" element={<MapPage />} />
 
+            {/* Authentication Pages */}
+            
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
           </Routes>
 

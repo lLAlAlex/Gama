@@ -128,7 +128,7 @@ export default function RegisterPage() {
 
           <motion.div variants={fadeInUp} className="relative">
             <img
-              src="/placeholder.svg?height=400&width=500"
+              src="/Images/logo.png?height=400&width=500"
               alt="Gama Cultural App"
               width={500}
               height={400}

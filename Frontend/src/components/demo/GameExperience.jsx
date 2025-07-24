@@ -7,6 +7,7 @@ import { Tugu } from "./models/Tugu";
 import { Physics } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
 import { MapTiles } from "./models/Map";
+import { Chest } from "./models/Chest";
 
 export const Experience = () => {
   const shadowCameraRef = useRef();
@@ -42,6 +43,7 @@ export const Experience = () => {
         />
         <CharacterController />
         <Tugu scale={0.5} position={[1, 0, 2]} />
+        <Chest scale={0.5} position={[3, 0, 3]} />
       </Physics>
     </>
   );

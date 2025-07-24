@@ -54,7 +54,7 @@ function LocationMarker() {
   );
 }
 
-function App() {
+function MapPage() {
     const [markers, ] = useState<LatLngProp[]>(initialMarkers);
 
   return (
@@ -80,4 +80,4 @@ function App() {
   );
 }
 
-export default App;
+export default MapPage;

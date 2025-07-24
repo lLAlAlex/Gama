@@ -122,7 +122,7 @@ export default function HeroSection() {
                     </motion.div>
 
                     <motion.div
-                      className="text-center text-white"
+                      className="text-center text-black"
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                     >

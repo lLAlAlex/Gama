@@ -8,6 +8,7 @@ import Modal from "../../components/Modal";
 import FloatingButton from "../../components/FloatingButton";
 import { ChestInteraction } from '../../components/ChestInteraction';
 import { TriviaModal } from "../../components/TriviaModal";
+import { RewardModal } from "../../components/RewardModal";
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -27,6 +28,7 @@ function DemoPage() {
         </Canvas>
         <ChestInteraction />
         <TriviaModal />
+        <RewardModal />
       </KeyboardControls>
       <Modal />
       <Menu />

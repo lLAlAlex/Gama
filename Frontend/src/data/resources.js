@@ -1,0 +1,1 @@
+export const REWARDS = ["Wood", "Iron"];

@@ -8,7 +8,7 @@ export const monuments = [
     position: new THREE.Vector3(1, 0, 2),
     recipe: {
       name: 'Keris',
-      image: '/Images/Item/keris-majapahit.png',
+      image: '/Images/Item/keris_recipe.png',
     },
     info: {
       image: '/Images/monas.jpg',

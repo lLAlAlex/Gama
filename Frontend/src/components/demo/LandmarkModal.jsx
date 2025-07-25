@@ -51,7 +51,7 @@ const LandmarkModal = () => {
 
   const reward = {
     name: "Keris Recipe",
-    image: "/Images/Item/keris-majapahit.png",
+    image: "/Images/Item/keris_recipe.png",
   };
 
   return (

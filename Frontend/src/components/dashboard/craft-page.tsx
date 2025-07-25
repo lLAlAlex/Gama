@@ -648,7 +648,7 @@ export default function CraftPage() {
                             >
                               <span className="capitalize font-medium">{resource}</span>
                               <span className={`font-bold ${hasEnough ? "text-green-700" : "text-red-700"}`}>
-                                {available}/{required}
+                                {(available as number)}/{(required as number)}
                               </span>
                             </div>
                           )

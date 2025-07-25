@@ -777,7 +777,7 @@ export default function InventoryPage() {
                         >
                           <span className="font-medium">{material}</span>
                           <span className={`font-bold ${hasEnough ? "text-green-700" : "text-red-700"}`}>
-                            {available}/{required}
+                            {(available as number)}/{(required as number)}
                             {hasEnough ? (
                               <CheckCircle className="h-4 w-4 inline ml-1" />
                             ) : (

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { initialMarkers } from "@/lib/data";
 import L from "leaflet";
@@ -114,7 +114,7 @@ function MapPage() {
   const [userPosition, setUserPosition] = useState<latlngprop | null>(null);
   // Track markers that should be red
   const [redMarkers, setRedMarkers] = useState<{ [id: number]: boolean }>({});
-  const [selectedDistance, setSelectedDistance] = useState<{
+  const [, setSelectedDistance] = useState<{
     [id: number]: number;
   }>({});
   const openModal = useLandmarkModalStore((state) => state.openModal);

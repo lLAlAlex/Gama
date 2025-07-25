@@ -41,7 +41,7 @@ export default function Dashboard() {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h1 className="text-3xl font-bold mb-2">Welcome back, Ahmad! 👋</h1>
+                  <h1 className="text-3xl font-bold mb-2">Welcome back, Stanley! 👋</h1>
                   <p className="text-red-100 text-lg">You've discovered 3 new landmarks this week. Keep exploring!</p>
                 </div>
                 <div className="text-right">

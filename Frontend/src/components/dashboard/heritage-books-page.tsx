@@ -103,7 +103,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "legendary",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Keris",
+      image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Keris",
       description: {
         en: "A sacred ceremonial dagger with intricate patterns and spiritual significance.",
         id: "Belati upacara suci dengan pola rumit dan makna spiritual yang mendalam.",
@@ -144,7 +144,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "rare",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Batik",
+      image: "/Images/Item/batik-parang-rusak.png?height=200&width=200&text=Batik",
       description: {
         en: "Traditional batik pattern reserved for Javanese royalty, featuring diagonal knife-like motifs.",
         id: "Pola batik tradisional yang dikhususkan untuk bangsawan Jawa, menampilkan motif diagonal seperti pisau.",
@@ -180,7 +180,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "uncommon",
       discovered: false,
-      image: "/placeholder.svg?height=200&width=200&text=Gamelan",
+      image: "/Images/Item/iron.png?height=200&width=200&text=Gamelan",
       description: {
         en: "The largest gong in a traditional Gamelan orchestra, producing deep, resonant tones.",
         id: "Gong terbesar dalam orkestra Gamelan tradisional, menghasilkan nada yang dalam dan bergema.",
@@ -216,7 +216,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "rare",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Rumah+Gadang",
+      image: "/Images/Item/rumah-minangkabau.png?height=200&width=200&text=Rumah+Gadang",
       description: {
         en: "Traditional Minangkabau house with distinctive curved roof resembling buffalo horns.",
         id: "Rumah tradisional Minangkabau dengan atap melengkung khas yang menyerupai tanduk kerbau.",
@@ -257,7 +257,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "uncommon",
       discovered: true,
-      image: "/placeholder.svg?height=200&width=200&text=Wayang",
+      image: "/Images/Item/wayang-kulit.png?height=200&width=200&text=Wayang",
       description: {
         en: "Traditional shadow puppet representing the hero Arjuna from the Mahabharata epic.",
         id: "Boneka bayangan tradisional yang mewakili pahlawan Arjuna dari epos Mahabharata.",
@@ -298,7 +298,7 @@ export default function HeritageBooksPage() {
       },
       rarity: "rare",
       discovered: false,
-      image: "/placeholder.svg?height=200&width=200&text=Songket",
+      image: "/Images/Item/wood.png?height=200&width=200&text=Songket",
       description: {
         en: "Luxurious hand-woven fabric with gold and silver threads, worn by Palembang royalty.",
         id: "Kain tenun mewah dengan benang emas dan perak, dikenakan oleh bangsawan Palembang.",
@@ -524,7 +524,7 @@ export default function HeritageBooksPage() {
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center">
                     {item.discovered ? (
                       <img
-                        src={item.image || "/placeholder.svg"}
+                        src={item.image || "/Images/Item/"}
                         alt={item.name[currentLanguage]}
                         className="w-full h-full object-cover"
                       />
@@ -614,7 +614,7 @@ export default function HeritageBooksPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl overflow-hidden">
                       <img
-                        src={selectedItem.image || "/placeholder.svg"}
+                        src={selectedItem.image || "/Images/Item/"}
                         alt={selectedItem.name[currentLanguage]}
                         className="w-full h-full object-cover"
                       />

@@ -90,7 +90,7 @@ const leaderboardData = [
   // ... more users
   {
     rank: 15,
-    name: "Ahmad (You)",
+    name: "Stanley (You)",
     avatar: "/Images/Placeholder/avatar.png?height=40&width=40&text=A",
     points: 12450,
     level: 15,

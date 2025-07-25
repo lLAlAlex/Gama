@@ -44,7 +44,7 @@ export default function UserProfileCard() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
-                <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Ahmad Joko" />
+                <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Stanley Wijaya" />
                 <AvatarFallback className="bg-red-500 text-white text-2xl font-bold">AJ</AvatarFallback>
               </Avatar>
               <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-1">
@@ -66,7 +66,7 @@ export default function UserProfileCard() {
           {/* User Info */}
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
-              <h2 className="text-2xl font-bold text-gray-800">Ahmad Joko</h2>
+              <h2 className="text-2xl font-bold text-gray-800">Stanley Wijaya</h2>
               <Badge className="bg-red-100 text-red-700">
                 <Star className="h-3 w-3 mr-1 fill-current" />
                 Level 12

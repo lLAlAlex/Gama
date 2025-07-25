@@ -39,7 +39,7 @@ interface HeritageItem {
     en: string
     id: string
   }
-  rarity: "common" | "uncommon" | "rare" | "legendary"
+  rarity: "Common" | "Uncommon" | "Rare" | "Legendary"
   discovered: boolean
   image: string
   description: {
@@ -101,7 +101,7 @@ export default function HeritageBooksPage() {
         en: "East Java",
         id: "Jawa Timur",
       },
-      rarity: "legendary",
+      rarity: "Legendary",
       discovered: true,
       image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Keris",
       description: {
@@ -142,7 +142,7 @@ export default function HeritageBooksPage() {
         en: "Central Java",
         id: "Jawa Tengah",
       },
-      rarity: "rare",
+      rarity: "Rare",
       discovered: true,
       image: "/Images/Item/batik-parang-rusak.png?height=200&width=200&text=Batik",
       description: {
@@ -178,7 +178,7 @@ export default function HeritageBooksPage() {
         en: "Central Java",
         id: "Jawa Tengah",
       },
-      rarity: "uncommon",
+      rarity: "Uncommon",
       discovered: false,
       image: "/Images/Item/iron.png?height=200&width=200&text=Gamelan",
       description: {
@@ -214,7 +214,7 @@ export default function HeritageBooksPage() {
         en: "West Sumatra",
         id: "Sumatera Barat",
       },
-      rarity: "rare",
+      rarity: "Rare",
       discovered: true,
       image: "/Images/Item/rumah-minangkabau.png?height=200&width=200&text=Rumah+Gadang",
       description: {
@@ -255,7 +255,7 @@ export default function HeritageBooksPage() {
         en: "Central Java",
         id: "Jawa Tengah",
       },
-      rarity: "uncommon",
+      rarity: "Uncommon",
       discovered: true,
       image: "/Images/Item/wayang-kulit.png?height=200&width=200&text=Wayang",
       description: {
@@ -296,7 +296,7 @@ export default function HeritageBooksPage() {
         en: "South Sumatra",
         id: "Sumatera Selatan",
       },
-      rarity: "rare",
+      rarity: "Rare",
       discovered: false,
       image: "/Images/Item/wood.png?height=200&width=200&text=Songket",
       description: {
@@ -325,13 +325,13 @@ export default function HeritageBooksPage() {
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
-      case "common":
+      case "Common":
         return "bg-gray-100 text-gray-700 border-gray-200"
-      case "uncommon":
+      case "Uncommon":
         return "bg-green-100 text-green-700 border-green-200"
-      case "rare":
+      case "Rare":
         return "bg-blue-100 text-blue-700 border-blue-200"
-      case "legendary":
+      case "Legendary":
         return "bg-red-100 text-red-700 border-red-200"
       default:
         return "bg-gray-100 text-gray-700 border-gray-200"
@@ -340,13 +340,13 @@ export default function HeritageBooksPage() {
 
   const getRarityIcon = (rarity: string) => {
     switch (rarity) {
-      case "common":
+      case "Common":
         return "⚪"
-      case "uncommon":
+      case "Uncommon":
         return "🟢"
-      case "rare":
+      case "Rare":
         return "🔵"
-      case "legendary":
+      case "Legendary":
         return "🔴"
       default:
         return "⚪"

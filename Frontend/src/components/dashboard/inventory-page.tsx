@@ -33,88 +33,88 @@ const userResources = [
     name: "Bamboo",
     type: "Wood",
     quantity: 45,
-    rarity: "common",
+    rarity: "Common",
     description: "Flexible and strong bamboo stalks, perfect for traditional crafting.",
     source: "Harvested from bamboo forests in Java",
     uses: ["Building materials", "Musical instruments", "Crafting tools"],
-    image: "/placeholder.svg?height=100&width=100&text=Bamboo",
+    image: "/Images/Item/Resources/bamboo.png",
   },
   {
     id: 2,
     name: "Teak Wood",
     type: "Wood",
     quantity: 23,
-    rarity: "uncommon",
+    rarity: "Uncommon",
     description: "Premium hardwood known for its durability and beautiful grain.",
     source: "Ancient teak forests of Central Java",
     uses: ["Furniture", "Ship building", "Traditional architecture"],
-    image: "/placeholder.svg?height=100&width=100&text=Teak",
+    image: "/Images/Item/wood.png",
   },
   {
     id: 3,
     name: "Volcanic Stone",
     type: "Stone",
     quantity: 18,
-    rarity: "rare",
+    rarity: "Rare",
     description: "Sacred stones from Indonesian volcanoes, used in temple construction.",
     source: "Mount Merapi volcanic region",
     uses: ["Temple building", "Sculptures", "Sacred artifacts"],
-    image: "/placeholder.svg?height=100&width=100&text=Stone",
+    image: "/Images/Item/Resources/volcanic_stone.png",
   },
   {
     id: 4,
     name: "Silk Cloth",
     type: "Textile",
     quantity: 12,
-    rarity: "uncommon",
+    rarity: "Uncommon",
     description: "Fine silk fabric traditionally used for royal garments.",
     source: "Silk worms from Yogyakarta",
     uses: ["Royal clothing", "Ceremonial items", "Traditional textiles"],
-    image: "/placeholder.svg?height=100&width=100&text=Silk",
+    image: "/Images/Item/Resources/silk_cloth.png",
   },
   {
     id: 5,
     name: "Bronze Ingot",
     type: "Metal",
     quantity: 8,
-    rarity: "rare",
+    rarity: "Rare",
     description: "High-quality bronze alloy for creating gamelan instruments.",
     source: "Traditional bronze smiths of Java",
     uses: ["Musical instruments", "Ceremonial objects", "Decorative items"],
-    image: "/placeholder.svg?height=100&width=100&text=Bronze",
+    image: "/Images/Item/Resources/bronze.png",
   },
   {
     id: 6,
-    name: "Jade Stone",
-    type: "Gem",
-    quantity: 3,
-    rarity: "legendary",
-    description: "Precious jade believed to have spiritual properties.",
-    source: "Ancient jade mines of Sumatra",
-    uses: ["Jewelry", "Sacred objects", "Royal accessories"],
-    image: "/placeholder.svg?height=100&width=100&text=Jade",
+    name: "Steel",
+    type: "Metal",
+    quantity: 5,
+    rarity: "Uncommon",
+    description: "A strong and durable metal.",
+    source: "Various locations",
+    uses: ["Building", "Crafting", "Weapons", "Armor"],
+    image: "/Images/Item/iron.png",
   },
   {
     id: 7,
     name: "Gold Leaf",
     type: "Metal",
     quantity: 1,
-    rarity: "legendary",
+    rarity: "Legendary",
     description: "Pure gold sheets for decorating sacred artifacts.",
     source: "Gold mines of Kalimantan",
     uses: ["Religious decorations", "Royal items", "Sacred art"],
-    image: "/placeholder.svg?height=100&width=100&text=Gold",
+    image: "/Images/Item/Resources/gold_leaf.png",
   },
   {
     id: 8,
     name: "Palm Leaves",
     type: "Plant",
     quantity: 35,
-    rarity: "common",
+    rarity: "Common",
     description: "Traditional writing material and roofing material.",
     source: "Palm trees across Indonesia",
     uses: ["Writing manuscripts", "Roofing", "Traditional crafts"],
-    image: "/placeholder.svg?height=100&width=100&text=Palm",
+    image: "/Images/Item/Resources/palm_leaves.png",
   },
 ]
 
@@ -124,7 +124,7 @@ const userRecipes = [
     id: 1,
     name: "Traditional Keris",
     category: "Weapons",
-    difficulty: "legendary",
+    difficulty: "Legendary",
     unlocked: true,
     completedCount: 2,
     description: "Sacred ceremonial dagger with mystical powers",
@@ -150,7 +150,7 @@ const userRecipes = [
     id: 2,
     name: "Gamelan Gong",
     category: "Instruments",
-    difficulty: "advanced",
+    difficulty: "Advanced",
     unlocked: true,
     completedCount: 1,
     description: "Sacred bronze gong for traditional orchestras",
@@ -174,7 +174,7 @@ const userRecipes = [
     id: 3,
     name: "Batik Fabric",
     category: "Textiles",
-    difficulty: "intermediate",
+    difficulty: "Intermediate",
     unlocked: true,
     completedCount: 5,
     description: "Traditional wax-resist dyed fabric with intricate patterns",
@@ -198,7 +198,7 @@ const userRecipes = [
     id: 4,
     name: "Wayang Puppet",
     category: "Art",
-    difficulty: "advanced",
+    difficulty: "Advanced",
     unlocked: false,
     completedCount: 0,
     description: "Traditional shadow puppet for storytelling",
@@ -222,7 +222,7 @@ const userRecipes = [
     id: 5,
     name: "Angklung Instrument",
     category: "Instruments",
-    difficulty: "beginner",
+    difficulty: "Beginner",
     unlocked: true,
     completedCount: 8,
     description: "Traditional bamboo musical instrument",
@@ -250,7 +250,7 @@ const userItems = [
     id: 1,
     name: "Keris Majapahit",
     category: "Weapons",
-    rarity: "legendary",
+    rarity: "Legendary",
     craftedDate: "2024-01-20",
     description: "A masterfully crafted ceremonial dagger with intricate damascus patterns",
     history:
@@ -266,7 +266,7 @@ const userItems = [
     id: 2,
     name: "Gamelan Gong Ageng",
     category: "Instruments",
-    rarity: "rare",
+    rarity: "Rare",
     craftedDate: "2024-02-05",
     description: "A large bronze gong that produces deep, resonant tones",
     history:
@@ -282,7 +282,7 @@ const userItems = [
     id: 3,
     name: "Batik Parang Rusak",
     category: "Textiles",
-    rarity: "rare",
+    rarity: "Rare",
     craftedDate: "2024-01-30",
     description: "Royal batik pattern with diagonal knife-like motifs",
     history:
@@ -298,7 +298,7 @@ const userItems = [
     id: 4,
     name: "Angklung Ensemble Set",
     category: "Instruments",
-    rarity: "uncommon",
+    rarity: "Uncommon",
     craftedDate: "2024-01-12",
     description: "A complete set of bamboo instruments for traditional music",
     history: "These Angklung were crafted following the UNESCO-recognized traditions of West Java.",
@@ -313,7 +313,7 @@ const userItems = [
     id: 5,
     name: "Traditional Songket",
     category: "Textiles",
-    rarity: "rare",
+    rarity: "Rare",
     craftedDate: "2024-02-10",
     description: "Luxurious hand-woven fabric with gold thread patterns",
     history:
@@ -336,13 +336,13 @@ export default function InventoryPage() {
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
-      case "common":
+      case "Common":
         return "bg-gray-100 text-gray-700 border-gray-300"
-      case "uncommon":
+      case "Uncommon":
         return "bg-green-100 text-green-700 border-green-300"
-      case "rare":
+      case "Rare":
         return "bg-blue-100 text-blue-700 border-blue-300"
-      case "legendary":
+      case "Legendary":
         return "bg-purple-100 text-purple-700 border-purple-300"
       default:
         return "bg-gray-100 text-gray-700 border-gray-300"
@@ -351,13 +351,13 @@ export default function InventoryPage() {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "beginner":
+      case "Beginner":
         return "bg-green-100 text-green-800 border-green-300"
-      case "intermediate":
+      case "Intermediate":
         return "bg-yellow-100 text-yellow-800 border-yellow-300"
-      case "advanced":
+      case "Advanced":
         return "bg-orange-100 text-orange-800 border-orange-300"
-      case "legendary":
+      case "Legendary":
         return "bg-purple-100 text-purple-800 border-purple-300"
       default:
         return "bg-gray-100 text-gray-800 border-gray-300"
@@ -484,7 +484,7 @@ export default function InventoryPage() {
                         <img
                           src={resource.image || "/placeholder.svg"}
                           alt={resource.name}
-                          className="w-16 h-16 object-cover rounded"
+                          className="w-32 h-32 object-cover rounded"
                         />
                       </div>
 

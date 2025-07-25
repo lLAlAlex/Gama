@@ -1,10 +1,10 @@
 export const REWARDS = [
   {
-    name: "Wood",
+    name: "Teak Wood",
     image: "/Images/Item/wood.png", 
   },
   {
-    name: "Iron",
+    name: "Steel",
     image: "/Images/Item/iron.png",
   },
 ];

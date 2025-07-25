@@ -45,7 +45,7 @@ export default function UserProfileCard() {
             >
               <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
                 <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Stanley Wijaya" />
-                <AvatarFallback className="bg-red-500 text-white text-2xl font-bold">AJ</AvatarFallback>
+                <AvatarFallback className="bg-red-500 text-white text-2xl font-bold">SW</AvatarFallback>
               </Avatar>
               <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-1">
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse" />

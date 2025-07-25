@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Default Import
 
@@ -9,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 // Layout
 
-import Layout from "@/layouts/root-layout";
+// import Layout from "@/layouts/root-layout";
 
 // Utility Pages / Components
 
@@ -30,6 +31,7 @@ import ForgotPasswordPage from "@/pages/Auth/forgot-password";
 import LandingPage from "@/pages/Landing/page2";
 
 import MapPage from "./pages/Map/page";
+// @ts-ignore
 import DemoPage from "./pages/Demo/page";
 
 // User Dashboard

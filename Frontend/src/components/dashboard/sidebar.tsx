@@ -24,6 +24,7 @@ import {
   Map,
   IdCard,
   Paperclip,
+  Building,
 } from "lucide-react"
 
 interface SidebarProps {
@@ -86,6 +87,13 @@ export default function Sidebar({
       icon: <ShoppingBag className="h-5 w-5" />,
       color: "from-red-600 to-orange-500",
       badge: "Sale",
+    },
+    {
+      id: "adopt",
+      label: "Adopt Heritage",
+      icon: <Building className="h-5 w-5" />,
+      color: "from-red-700 to-red-800",
+      badge: "3",
     },
     {
       id: "submit",

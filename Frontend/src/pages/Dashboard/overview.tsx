@@ -18,6 +18,8 @@ import InventoryPage from "@/components/dashboard/inventory-page"
 import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 import MemoryPassportPage from "@/components/dashboard/memory-passport-page"
 import SubmitContentPage from "@/components/dashboard/submit-content-page"
+import AdoptHeritagePage from "@/components/dashboard/adopt-heritage-page"
+import CommunityPage from "@/components/dashboard/community-page"
 // import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 
 export default function Dashboard() {
@@ -82,24 +84,28 @@ export default function Dashboard() {
         return <CraftPage />
       case "achievements":
         return <AchievementsPage />
-      case "community":
-        return (
-          <motion.div
-            className="text-center py-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Community</h2>
-            <p className="text-gray-600">Connect with fellow cultural explorers.</p>
-          </motion.div>
-        )
+      // case "community":
+      //   return (
+      //     <motion.div
+      //       className="text-center py-20"
+      //       initial={{ opacity: 0 }}
+      //       animate={{ opacity: 1 }}
+      //       transition={{ duration: 0.5 }}
+      //     >
+      //       <h2 className="text-3xl font-bold text-gray-800 mb-4">Community</h2>
+      //       <p className="text-gray-600">Connect with fellow cultural explorers.</p>
+      //     </motion.div>
+      //   )
       case "journey":
         return <JourneyRecapPage />
       case "memory":
         return <MemoryPassportPage />
       case "submit":
         return <SubmitContentPage />
+      case "adopt":
+        return <AdoptHeritagePage />
+      case "community":
+        return <CommunityPage />
       default:
         return null
     }

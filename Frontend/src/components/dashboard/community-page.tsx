@@ -56,7 +56,7 @@ export default function CommunityPage() {
       title: "Traditional Batik Making Process in Yogyakarta",
       content:
         "Witnessed the incredible artistry of batik making at Taman Sari. The patience and skill required for each piece is truly remarkable. This particular pattern represents the philosophy of life in Javanese culture.",
-      image: "/placeholder.svg?height=400&width=600&text=Batik+Making",
+      image: "/Images/Testimonial/batik.png?height=400&width=600&text=Batik+Making",
       category: "Traditional Arts",
       province: "Yogyakarta",
       tags: ["batik", "traditional-arts", "yogyakarta", "javanese-culture"],
@@ -129,7 +129,7 @@ export default function CommunityPage() {
       title: "Sunrise at Pura Lempuyang Temple",
       content:
         "Captured this magical moment at the Gates of Heaven. The temple's architecture perfectly frames Mount Agung in the background. This sacred place has been a pilgrimage site for over 1000 years.",
-      image: "/placeholder.svg?height=400&width=600&text=Temple+Sunrise",
+      image: "/Images/Testimonial/sunrise.png?height=400&width=600&text=Temple+Sunrise",
       category: "Sacred Places",
       province: "Bali",
       tags: ["temple", "sunrise", "bali", "sacred", "architecture"],

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Play, Clock, Users, Trophy, Star, Gamepad2, Mountain, Globe, Coins, Target, Award } from "lucide-react"
+import { useNavigate } from "react-router"
 
 interface GameMode {
   id: string
@@ -31,6 +32,8 @@ interface GameMode {
 }
 
 export default function PlayPage() {
+
+  const navigate = useNavigate()
   const [selectedMode, setSelectedMode] = useState("3d-quest")
 
   const gameModes: GameMode[] = [
@@ -312,6 +315,22 @@ export default function PlayPage() {
                         <Button
                           size="lg"
                           className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                          onClick={() => {
+                            switch (selectedMode) {
+                              case "3d-quest":
+                                navigate("/demo");
+                                break;
+                              case "2d-hunt":
+                                navigate("/map");
+                                break;
+                              case "geoguessr":
+                                navigate("/map-game");
+                                break;
+                              default:
+                                navigate("/");
+                                break;
+                            }
+                          }}
                         >
                           <Play className="h-5 w-5 mr-2" />
                           Start Playing

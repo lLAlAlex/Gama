@@ -124,7 +124,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content */}
-      <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-72"}`}>
+      <div className="flex-1 transition-all duration-300 ml-6">
         <main className="p-6 lg:p-8">
           <motion.div
             key={activeTab}

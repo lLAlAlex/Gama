@@ -10,7 +10,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <HeroBackground />
 
-      <div className="container px-4 py-20 relative z-10">
+      <div className="container px-20 py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left Content */}
           <motion.div

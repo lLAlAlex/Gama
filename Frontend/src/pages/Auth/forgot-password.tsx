@@ -47,12 +47,12 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen py-16 bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen py-16 bg-gradient-to-br from-red-50 via-white to-red-50 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-red-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-red-400/20 to-rose-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -68,16 +68,16 @@ export default function ForgotPasswordPage() {
               href="/"
               className="flex items-center justify-center lg:justify-start space-x-3 mb-8"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <img src={MoveLeft} alt="arrow"></img>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Back to Home
               </span>
             </a>
 
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                 Secure
               </span>
               <br />
@@ -91,19 +91,19 @@ export default function ForgotPasswordPage() {
 
             <div className="space-y-4 mb-8">
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <Shield className="w-4 h-4 text-white" />
                 </div>
                 <span>Secure password recovery process</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
                 <span>Email verification for account safety</span>
               </div>
               <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
                   <Globe className="w-4 h-4 text-white" />
                 </div>
                 <span>Quick access to your cultural journey</span>
@@ -119,7 +119,7 @@ export default function ForgotPasswordPage() {
               height={400}
               className="rounded-2xl shadow-2xl"
             />
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-red-400 to-red-500 rounded-full flex items-center justify-center shadow-lg">
               <Shield className="w-8 h-8 text-white" />
             </div>
           </motion.div>
@@ -135,10 +135,10 @@ export default function ForgotPasswordPage() {
           <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-lg">
             <CardHeader className="text-center pb-8">
               <div className="lg:hidden flex items-center justify-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
-                <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-3xl font-bold bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                   Gama
                 </span>
               </div>
@@ -155,7 +155,7 @@ export default function ForgotPasswordPage() {
                 </>
               ) : (
                 <>
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-3xl font-bold text-slate-800 mb-2">
@@ -186,7 +186,7 @@ export default function ForgotPasswordPage() {
                         placeholder="Enter your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="pl-12 h-12 border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 bg-white/50"
+                        className="pl-12 h-12 border-slate-200 focus:border-red-500 focus:ring-red-500 bg-white/50"
                         required
                       />
                     </div>
@@ -198,7 +198,7 @@ export default function ForgotPasswordPage() {
                   >
                     <Button
                       type="submit"
-                      className="w-full h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg"
+                      className="w-full h-12 bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white font-medium rounded-xl shadow-lg"
                       disabled={isLoading}
                     >
                       {isLoading ? (
@@ -217,8 +217,8 @@ export default function ForgotPasswordPage() {
                 </form>
               ) : (
                 <div className="space-y-6">
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                    <p className="text-green-800 text-sm leading-relaxed">
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                    <p className="text-red-800 text-sm leading-relaxed">
                       <strong>What's next?</strong>
                       <br />
                       1. Check your email inbox (and spam folder)
@@ -253,7 +253,7 @@ export default function ForgotPasswordPage() {
               <div className="text-center">
                 <a
                   href="/login"
-                  className="inline-flex items-center space-x-2 text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+                  className="inline-flex items-center space-x-2 text-red-600 hover:text-red-700 font-medium transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back to Sign In</span>
@@ -265,7 +265,7 @@ export default function ForgotPasswordPage() {
                   Don't have an account?{" "}
                   <a
                     href="/register"
-                    className="text-indigo-600 hover:text-indigo-700 font-medium"
+                    className="text-red-600 hover:text-red-700 font-medium"
                   >
                     Sign up here
                   </a>

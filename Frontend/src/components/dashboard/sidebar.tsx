@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   LayoutDashboard,
   Play,
@@ -25,15 +25,15 @@ import {
   IdCard,
   Paperclip,
   Building,
-} from "lucide-react"
+} from "lucide-react";
 
 interface SidebarProps {
-  isOpen: boolean
-  setIsOpen: (open: boolean) => void
-  activeTab: string
-  setActiveTab: (tab: string) => void
-  isCollapsed: boolean
-  setIsCollapsed: (collapsed: boolean) => void
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  isCollapsed: boolean;
+  setIsCollapsed: (collapsed: boolean) => void;
 }
 
 export default function Sidebar({
@@ -44,7 +44,6 @@ export default function Sidebar({
   isCollapsed,
   setIsCollapsed,
 }: SidebarProps) {
-
   const navigationItems = [
     {
       id: "overview",
@@ -130,7 +129,7 @@ export default function Sidebar({
       color: "from-red-500 to-red-700",
       badge: null,
     },
-  ]
+  ];
 
   const bottomItems = [
     {
@@ -145,18 +144,18 @@ export default function Sidebar({
       icon: <Home className="h-5 w-5" />,
       color: "from-red-600 to-red-700",
     },
-  ]
+  ];
 
   const handleItemClick = (itemId: string) => {
     if (itemId === "home") {
-      window.location.href = "/"
-      return
+      window.location.href = "/";
+      return;
     }
-    setActiveTab(itemId)
+    setActiveTab(itemId);
     if (window.innerWidth < 1024) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }
+  };
 
   return (
     <>
@@ -175,7 +174,7 @@ export default function Sidebar({
 
       {/* Sidebar */}
       <motion.aside
-        className={`fixed left-0 top-0 h-full bg-white border-r border-red-100 shadow-xl z-50 lg:relative lg:translate-x-0 ${
+        className={`fixed left-0 top-0 h-full bg-white border-r border-red-100 shadow-xl z-50 lg:sticky lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         } transition-transform duration-300 ease-in-out`}
         animate={{ width: isCollapsed ? 80 : 280 }}
@@ -228,8 +227,13 @@ export default function Sidebar({
                 whileTap={{ scale: 0.98 }}
               >
                 <Avatar className="h-12 w-12 border-2 border-red-200">
-                  <AvatarImage src="/placeholder.svg?height=48&width=48" alt="User" />
-                  <AvatarFallback className="bg-red-500 text-white font-bold">AJ</AvatarFallback>
+                  <AvatarImage
+                    src="/placeholder.svg?height=48&width=48"
+                    alt="User"
+                  />
+                  <AvatarFallback className="bg-red-500 text-white font-bold">
+                    AJ
+                  </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold text-gray-800 truncate">Stanley Wijaya</div>
@@ -244,8 +248,13 @@ export default function Sidebar({
             {isCollapsed && (
               <div className="flex justify-center">
                 <Avatar className="h-10 w-10 border-2 border-red-200">
-                  <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
-                  <AvatarFallback className="bg-red-500 text-white font-bold text-sm">AJ</AvatarFallback>
+                  <AvatarImage
+                    src="/placeholder.svg?height=40&width=40"
+                    alt="User"
+                  />
+                  <AvatarFallback className="bg-red-500 text-white font-bold text-sm">
+                    AJ
+                  </AvatarFallback>
                 </Avatar>
               </div>
             )}
@@ -269,14 +278,18 @@ export default function Sidebar({
                 >
                   <div
                     className={`relative z-10 ${
-                      activeTab === item.id ? "text-white" : "text-red-600 group-hover:text-red-700"
+                      activeTab === item.id
+                        ? "text-white"
+                        : "text-red-600 group-hover:text-red-700"
                     }`}
                   >
                     {item.icon}
                   </div>
                   {!isCollapsed && (
                     <>
-                      <span className="font-medium relative z-10">{item.label}</span>
+                      <span className="font-medium relative z-10">
+                        {item.label}
+                      </span>
                       {item.badge && (
                         <span
                           className={`ml-auto px-2 py-1 text-xs font-bold rounded-full relative z-10 ${
@@ -312,8 +325,12 @@ export default function Sidebar({
                   whileTap={{ scale: 0.98 }}
                   title={isCollapsed ? item.label : ""}
                 >
-                  <div className="text-gray-500 group-hover:text-gray-700">{item.icon}</div>
-                  {!isCollapsed && <span className="font-medium">{item.label}</span>}
+                  <div className="text-gray-500 group-hover:text-gray-700">
+                    {item.icon}
+                  </div>
+                  {!isCollapsed && (
+                    <span className="font-medium">{item.label}</span>
+                  )}
                 </motion.button>
               ))}
             </div>
@@ -329,7 +346,9 @@ export default function Sidebar({
                   <Bell className="h-4 w-4" />
                   <span className="text-sm font-medium">New Achievement!</span>
                 </div>
-                <p className="text-xs opacity-90">You've unlocked "Temple Explorer" badge!</p>
+                <p className="text-xs opacity-90">
+                  You've unlocked "Temple Explorer" badge!
+                </p>
               </motion.div>
             )}
           </div>
@@ -346,5 +365,5 @@ export default function Sidebar({
         <Menu className="h-5 w-5 text-red-600" />
       </Button>
     </>
-  )
+  );
 }

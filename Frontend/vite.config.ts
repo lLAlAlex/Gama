@@ -8,6 +8,7 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["manifest.json"],
       workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com/,

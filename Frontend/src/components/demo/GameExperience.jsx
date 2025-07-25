@@ -133,7 +133,7 @@ export const Experience = () => {
           attach={"shadow-camera"}
         />
       </directionalLight>
-      <Physics debug>
+      <Physics>
         <MapTiles
           initialLat={37.7749}
           initialLon={-122.4194}

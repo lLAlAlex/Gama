@@ -3,9 +3,9 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Experience } from "../../components/demo/GameExperience";
-import Menu from "../../components/MenuScreen";
 import Modal from "../../components/Modal";
 import FloatingButton from "../../components/FloatingButton";
+import FloatingMenuButton from "../../components/FloatingButtonStyle";
 import { ChestInteraction } from '../../components/ChestInteraction';
 import { TriviaModal } from "../../components/TriviaModal";
 import { RewardModal } from "../../components/RewardModal";
@@ -31,8 +31,8 @@ function DemoPage() {
         <RewardModal />
       </KeyboardControls>
       <Modal />
-      <Menu />
-      <FloatingButton />
+      {/* <Menu /> */}
+      <FloatingMenuButton />
     </div>
   );
 }

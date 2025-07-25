@@ -5,12 +5,12 @@ const FloatingMenuButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { id: 'home', icon: Home, label: 'Home', description: 'Go to home screen' },
-    { id: 'profile', icon: User, label: 'Profile', description: 'View your profile' },
-    { id: 'map', icon: MapPin, label: 'Map', description: 'Explore the map' },
-    { id: 'camera', icon: Camera, label: 'Camera', description: 'Take a photo' },
-    { id: 'achievements', icon: Trophy, label: 'Achievements', description: 'View your achievements' },
-    { id: 'settings', icon: Settings, label: 'Settings', description: 'App settings' },
+    { id: 'home', icon: Home, label: 'Home', description: 'Go to home screen', href: '/' },
+    { id: 'profile', icon: User, label: 'Profile', description: 'View your profile', href: '/dashboard' },
+    { id: 'map', icon: MapPin, label: 'Map', description: 'Explore the map', href: '/map' },
+    { id: 'camera', icon: Camera, label: 'Camera', description: 'Take a photo', href: '/camera' },
+    { id: 'achievements', icon: Trophy, label: 'Achievements', description: 'View your achievements', href: '/achievements' },
+    { id: 'settings', icon: Settings, label: 'Settings', description: 'App settings', href: '/settings' },
   ];
 
   const handleMenuItemClick = (item) => {
@@ -35,7 +35,7 @@ const FloatingMenuButton = () => {
       )}
 
       {/* Menu Items */}
-      <div className={`absolute bottom-16 right-0 transition-all duration-300 ease-in-out ${
+      <div className={`absolute menu-button-position transition-all duration-300 ease-in-out ${
         isMenuOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
       }`}>
         <div className="bg-white rounded-2xl shadow-2xl border border-red-100 p-4 min-w-72">
@@ -50,7 +50,8 @@ const FloatingMenuButton = () => {
                 }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
-                <button
+                <a
+                  href={item.href}
                   onClick={() => handleMenuItemClick(item)}
                   className="w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-red-50 active:bg-red-100 transition-all duration-200 group"
                 >
@@ -65,7 +66,7 @@ const FloatingMenuButton = () => {
                       {item.description}
                     </div>
                   </div>
-                </button>
+                </a>
               </div>
             ))}
           </div>

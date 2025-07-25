@@ -119,6 +119,10 @@ const config: Config = {
         '.button-position': {
           bottom: '1rem',
           right: '1rem',
+        },
+		'.menu-button-position': {
+          bottom: '4rem',
+          right: '0.5rem',
         }
       })
     })

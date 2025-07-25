@@ -81,8 +81,8 @@ export default function FeaturesSection() {
     },
     {
       icon: <Globe className="h-8 w-8" />,
-      title: "Multi-language",
-      description: "Available in Indonesian, English, and regional languages",
+      title: "AI Cultural Guide",
+      description: "Personalized recommendations based on your interests",
       gradient: "from-pink-500 to-red-700",
     },
     {
@@ -144,7 +144,7 @@ export default function FeaturesSection() {
           ))}
         </div>
 
-        <motion.div
+        {/* <motion.div
           className="mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +183,7 @@ export default function FeaturesSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

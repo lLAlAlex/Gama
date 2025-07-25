@@ -146,11 +146,11 @@ function MapGamePage() {
     }
   };
 
-  const handleCloseBar = () => {
-    setShowLine(false);
-    setDistanceKm(null);
-    setShowAnswer(false);
-  };
+  // const handleCloseBar = () => {
+  //   setShowLine(false);
+  //   setDistanceKm(null);
+  //   setShowAnswer(false);
+  // };
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);

@@ -5,6 +5,8 @@ import { initialMarkers } from "@/lib/data";
 import L from "leaflet";
 import { useLandmarkModalStore } from "@/store/landmarkStore";
 import MarkerModal from "@/components/map/LandmarkModal";
+import { MarkerLayer, Marker as MarkerReact } from "react-leaflet-marker";
+import { User } from "lucide-react";
 
 interface latlngprop {
   lat: number;
@@ -27,6 +29,11 @@ const redIcon = new L.Icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 });
+
+// const customIcon = new icon({
+//   iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
+//   iconSize: [38, 38], // size of the icon
+// });
 
 const defaultIcon = new L.Icon.Default();
 
@@ -83,9 +90,23 @@ function Dummy({
   }, [map, setUserPosition]);
 
   return (
-    <Marker position={[-6.60132, 106.63574]}>
-      <Popup>You are here</Popup>
-    </Marker>
+    // <Marker position={[-6.60132, 106.63574]}>
+    //   <Popup>You are here</Popup>
+    // </Marker>
+    <MarkerLayer>
+      <MarkerReact position={[-6.60132, 106.63574]}>
+        <div className="relative">
+          <div className="w-12 h-12 bg-blue-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+            <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+              <User className="w-4 h-4 text-white" />
+            </div>
+          </div>
+          {/* Selection rings */}
+          <div className="absolute inset-0 w-12 h-12 border-2 border-white rounded-full animate-ping opacity-75"></div>
+          <div className="absolute inset-0 w-16 h-16 -m-2 border-2 border-white/50 rounded-full animate-ping opacity-50 animation-delay-300"></div>
+        </div>
+      </MarkerReact>
+    </MarkerLayer>
   );
 }
 

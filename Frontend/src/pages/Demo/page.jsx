@@ -12,6 +12,7 @@ import { TriviaModal } from "../../components/demo/TriviaModal";
 import { RewardModal } from "../../components/demo/RewardModal";
 import LandmarkModal from "../../components/demo/LandmarkModal";
 import { ZoomUI } from '../../components/demo/ZoomUI';
+import { Leva } from "leva";
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -35,6 +36,7 @@ function DemoPage() {
         <TriviaModal />
         <RewardModal />
         <LandmarkModal />
+        <Leva hidden />
       </KeyboardControls>
       <Modal />
       {/* <Menu /> */}

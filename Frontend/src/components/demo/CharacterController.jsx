@@ -44,7 +44,8 @@ export const CharacterController = () => {
         max: degToRad(5),
         step: degToRad(0.1),
       },
-    }
+    },
+    { hidden: true }
   );
 
   const rb = useRef();

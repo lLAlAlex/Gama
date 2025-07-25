@@ -29,6 +29,7 @@ const redIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
+  className: 'animate-pulse'
 });
 
 // const customIcon = new icon({
@@ -38,45 +39,45 @@ const redIcon = new L.Icon({
 
 const defaultIcon = new L.Icon.Default();
 
-function LocationMarker() {
-  const [position, setPosition] = useState<latlngprop | null>(null);
-  const map = useMap();
+// function LocationMarker() {
+//   const [position, setPosition] = useState<latlngprop | null>(null);
+//   const map = useMap();
 
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser");
-      return;
-    }
+//   useEffect(() => {
+//     if (!navigator.geolocation) {
+//       alert("Geolocation is not supported by your browser");
+//       return;
+//     }
 
-    const watchId = navigator.geolocation.watchPosition(
-      (pos) => {
-        const latlng = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        };
-        setPosition(latlng);
-        map.flyTo(latlng, 16);
-      },
-      (err) => {
-        console.error("Geolocation error:", err);
-        alert("Unable to retrieve your location");
-      },
-      {
-        enableHighAccuracy: true,
-        maximumAge: 1000,
-        timeout: 10000,
-      }
-    );
+//     const watchId = navigator.geolocation.watchPosition(
+//       (pos) => {
+//         const latlng = {
+//           lat: pos.coords.latitude,
+//           lng: pos.coords.longitude,
+//         };
+//         setPosition(latlng);
+//         map.flyTo(latlng, 16);
+//       },
+//       (err) => {
+//         console.error("Geolocation error:", err);
+//         alert("Unable to retrieve your location");
+//       },
+//       {
+//         enableHighAccuracy: true,
+//         maximumAge: 1000,
+//         timeout: 10000,
+//       }
+//     );
 
-    return () => navigator.geolocation.clearWatch(watchId);
-  }, [map]);
+//     return () => navigator.geolocation.clearWatch(watchId);
+//   }, [map]);
 
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>You are here</Popup>
-    </Marker>
-  );
-}
+//   return position === null ? null : (
+//     <Marker position={position}>
+//       <Popup>You are here</Popup>
+//     </Marker>
+//   );
+// }
 
 function Dummy({
   setUserPosition,
@@ -91,12 +92,9 @@ function Dummy({
   }, [map, setUserPosition]);
 
   return (
-    // <Marker position={[-6.60132, 106.63574]}>
-    //   <Popup>You are here</Popup>
-    // </Marker>
     <MarkerLayer>
       <MarkerReact position={[-6.60132, 106.63574]}>
-        <div className="relative">
+        <div className="relative" onClick={() => {console.log('clicked')}}>
           <div className="w-12 h-12 bg-blue-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
             <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
               <User className="w-4 h-4 text-white" />
@@ -145,6 +143,25 @@ function MapPage() {
     return R * c;
   };
 
+  useEffect(() => {
+    if (!userPosition) return; // Do nothing if we don't have the user's location yet
+
+    const newRedMarkersState = markers.reduce((acc, marker) => {
+      const distance = haversineDistance(userPosition, {
+        lat: marker.lat,
+        lng: marker.lng,
+      });
+
+      // If distance is less than 5km, mark it as red
+      if (distance < 5) {
+        acc[marker.id] = true;
+      }
+      return acc;
+    }, {} as { [id: number]: boolean });
+
+    setRedMarkers(newRedMarkersState);
+  }, [userPosition, markers]);
+
   const onMarkerClick = (marker: LatLngProp) => {
     if (userPosition) {
       const dist = haversineDistance(userPosition, {
@@ -191,15 +208,6 @@ function MapPage() {
               click: () => onMarkerClick(marker),
             }}
           >
-            {/* <Popup>
-              Marker at [{marker.lat.toFixed(5)}, {marker.lng.toFixed(5)}]
-              <br />
-              {selectedDistance[marker.id] !== undefined
-                ? isNaN(selectedDistance[marker.id])
-                  ? "User location unknown"
-                  : `Distance: ${selectedDistance[marker.id].toFixed(3)} km`
-                : "Click marker to calculate distance"}
-            </Popup> */}
           </Marker>
         ))}
       </MapContainer>

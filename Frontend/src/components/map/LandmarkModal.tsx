@@ -20,7 +20,7 @@ const MarkerModal: React.FC = () => {
   }, [isModalOpen]);
 
   const handleClick = () => {
-    console.log(isMarkerNear);
+    // console.log(isMarkerNear);
     if (!isMarkerNear) return; // ignore click if disabled
     toggleContent();
   };
@@ -43,7 +43,7 @@ const MarkerModal: React.FC = () => {
   };
 
   return (
-    <Modal isOpen={isModalOpen} onClose={closeModal} title="Marker Information">
+    <Modal isOpen={isModalOpen} onClose={closeModal}>
       {selectedMarker ? (
         <div>
           {!showAltContent ? (
@@ -120,21 +120,25 @@ const MarkerModal: React.FC = () => {
                 >
                   Get Rewards
                 </Button>
+                {!isMarkerNear ? (
+                  <div className="text-center  red-500">You are too far!</div>
+
+                ) : (<></>)}
               </div>
             </div>
           ) : (
             <div className="max-w-md">
-              <div className="bg-gradient-to-br from-red-500 to-red-600 p-8 text-center relative overflow-hidden">
-                <div className="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-full"></div>
-                <div className="absolute top-8 right-6 w-4 h-4 bg-white/30 rounded-full"></div>
-                <div className="absolute bottom-4 left-8 w-6 h-6 bg-white/20 rounded-full"></div>
-                <div className="absolute bottom-6 right-4 w-3 h-3 bg-white/40 rounded-full"></div>
+              <div className="p-8 text-center relative overflow-hidden">
+                <div className="absolute top-4 left-4 w-8 h-8 bg-red-100 rounded-full"></div>
+                <div className="absolute top-8 right-6 w-4 h-4 bg-blue-100 rounded-full"></div>
+                <div className="absolute bottom-4 left-8 w-6 h-6 bg-green-100 rounded-full"></div>
+                <div className="absolute bottom-6 right-4 w-3 h-3 bg-yellow-50 rounded-full"></div>
 
                 <div className="relative z-10">
-                  <h3 className="text-white text-lg font-bold mb-2">
+                  <h3 className="text-red-600 text-lg font-bold mb-2">
                     Reward Collected!
                   </h3>
-                  <p className="text-red-100 text-sm">
+                  <p className="text-red-400 text-sm">
                     You've discovered a valuable resource
                   </p>
                 </div>

@@ -4,7 +4,7 @@ export const monuments = [
   {
     id: 'tugu_main',
     interactive: true,
-    name: 'Tugu Monument',
+    name: 'Monas',
     position: new THREE.Vector3(1, 0, 2),
     recipe: {
       name: 'Keris',

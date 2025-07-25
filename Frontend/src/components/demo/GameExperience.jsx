@@ -13,6 +13,31 @@ import * as THREE from "three";
 
 import { useGameStore } from "@/store/gameStore";
 
+const MonumentProximityManager = ({ monumentPosition, interactionDist }) => {
+  const playerPosition = useGameStore((state) => state.playerPosition);
+  const setIsNearMonument = useGameStore((state) => state.setIsNearMonument);
+  const setDistanceToMonument = useGameStore((state) => state.setDistanceToMonument);
+
+  const wasNear = useRef(false);
+  const playerVec3 = useRef(new THREE.Vector3());
+
+  useFrame(() => {
+    if (playerPosition) {
+      playerVec3.current.set(playerPosition.x, playerPosition.y, playerPosition.z);
+    }
+    const distance = playerVec3.current.distanceTo(monumentPosition);
+    
+    setDistanceToMonument(distance / 1000); 
+
+    const isNowNear = distance <= interactionDist;
+    if (isNowNear !== wasNear.current) {
+      setIsNearMonument(isNowNear);
+      wasNear.current = isNowNear;
+    }
+  });
+  return null;
+};
+
 const ProximityManager = ({ chestPosition, interactionDist }) => {
   const playerPosition = useGameStore((state) => state.playerPosition);
   const setIsNearChest = useGameStore((state) => state.setIsNearChest);
@@ -85,6 +110,7 @@ export const Experience = () => {
   const shadowCameraRef = useRef();
   const INTERACTION_DIST = 1
   const chestPosition = useGameStore((state) => state.chestPosition);
+  const tuguPosition = new THREE.Vector3(1, 0, 2);
 
   return (
     <>
@@ -116,7 +142,12 @@ export const Experience = () => {
           WORLD_SCALE={10}
         />
         <CharacterController />
-        <Tugu scale={0.5} position={[1, 0, 2]} />
+        <Tugu scale={0.5} position={tuguPosition} />
+        <Tugu scale={0.5} position={[5,0,5]} />
+        <Tugu scale={0.5} position={[-1,0,5]} />
+        <Tugu scale={0.5} position={[-5,0,4]} />
+        <Tugu scale={0.5} position={[6,0,1]} />
+        <Tugu scale={0.5} position={[10,0,8]} />
         
         {chestPosition && (
           <Chest 
@@ -128,6 +159,10 @@ export const Experience = () => {
 
         <ProximityManager
           chestPosition={chestPosition}
+          interactionDist={INTERACTION_DIST}
+        />
+        <MonumentProximityManager
+          monumentPosition={tuguPosition}
           interactionDist={INTERACTION_DIST}
         />
         <ChestSpawner />

@@ -4,11 +4,14 @@ import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Experience } from "../../components/demo/GameExperience";
 import Modal from "../../components/Modal";
-import FloatingButton from "../../components/FloatingButton";
-import FloatingMenuButton from "../../components/FloatingButtonStyle";
-import { ChestInteraction } from '../../components/ChestInteraction';
-import { TriviaModal } from "../../components/TriviaModal";
-import { RewardModal } from "../../components/RewardModal";
+import FloatingButton from "../../components/demo/FloatingButton";
+import FloatingMenuButton from "../../components/demo/FloatingButtonStyle";
+import { ChestInteraction } from '../../components/demo/ChestInteraction';
+import { LandmarkInteraction } from '../../components/demo/LandmarkInteraction';
+import { TriviaModal } from "../../components/demo/TriviaModal";
+import { RewardModal } from "../../components/demo/RewardModal";
+import LandmarkModal from "../../components/demo/LandmarkModal";
+import { ZoomUI } from '../../components/demo/ZoomUI';
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -27,8 +30,11 @@ function DemoPage() {
           <Experience />
         </Canvas>
         <ChestInteraction />
+        <LandmarkInteraction />
+        <ZoomUI />
         <TriviaModal />
         <RewardModal />
+        <LandmarkModal />
       </KeyboardControls>
       <Modal />
       {/* <Menu /> */}

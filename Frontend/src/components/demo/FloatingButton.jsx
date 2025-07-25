@@ -1,5 +1,5 @@
 import React from "react";
-import { useMenuStore } from "../store/menuStore";
+import { useMenuStore } from "../../store/menuStore";
 
 const FloatingButton = () => {
   const openMenu = useMenuStore((state) => state.openMenu);

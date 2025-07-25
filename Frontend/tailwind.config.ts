@@ -123,7 +123,11 @@ const config: Config = {
 		'.menu-button-position': {
           bottom: '4rem',
           right: '0.5rem',
-        }
+        },
+		'.zoom-button-position': {
+			top: '1rem',
+			left: '1.5rem'
+		}
       })
     })
   ],

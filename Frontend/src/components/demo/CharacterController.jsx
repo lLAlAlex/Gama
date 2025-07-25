@@ -4,7 +4,7 @@ import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 import { Character } from "./models/Character";
 import { useRef, useState, useEffect } from "react";
 import { Vector3 } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree  } from "@react-three/fiber";
 import { useControls } from "leva";
 import { useKeyboardControls } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
@@ -64,6 +64,9 @@ export const CharacterController = () => {
   const [subscribeKeys, get] = useKeyboardControls();
   const setPlayerPosition = useGameStore((state) => state.setPlayerPosition);
   const openChest = useGameStore((state) => state.openChest);
+  const { cameraZoomOffset, zoomIn, zoomOut } = useGameStore();
+
+  const { gl } = useThree();
 
   useEffect(() => {
     const unsubscribe = subscribeKeys(
@@ -76,6 +79,23 @@ export const CharacterController = () => {
     );
     return unsubscribe;
   }, [openChest, subscribeKeys]);
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const handleWheel = (event) => {
+      event.preventDefault();
+      if (event.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    };
+
+    canvas.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      canvas.removeEventListener('wheel', handleWheel);
+    };
+  }, [gl, zoomIn, zoomOut]);
 
   useFrame(({ camera }) => {
     if (rb.current) {
@@ -142,6 +162,11 @@ export const CharacterController = () => {
 
     cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
     camera.position.lerp(cameraWorldPosition.current, 0.1);
+
+    if (cameraPosition.current) {
+        cameraPosition.current.position.y = 4 + cameraZoomOffset * 0.5;
+        cameraPosition.current.position.z = -4 - cameraZoomOffset;
+    }
 
     if (cameraTarget.current) {
       cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);

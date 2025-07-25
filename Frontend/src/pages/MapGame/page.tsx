@@ -241,7 +241,7 @@ function MapGamePage() {
                     <div className="absolute bottom-6 right-4 w-2 h-2 bg-white/40 rounded-full"></div>
 
                     <div className="relative z-10">
-                      <h3 className="text-white text-lg font-bold mb-2">🎧 Language Quiz</h3>
+                      <h3 className="text-white text-lg font-bold mb-2">Language Quiz</h3>
                       <p className="text-red-100 text-sm">
                         Question {currentQuestion.questionNumber} of {quizData.totalQuestions}
                       </p>

@@ -7,6 +7,7 @@ import { useLandmarkModalStore } from "@/store/landmarkStore";
 import MarkerModal from "@/components/map/LandmarkModal";
 import { MarkerLayer, Marker as MarkerReact } from "react-leaflet-marker";
 import { User } from "lucide-react";
+import FloatingMenuButton from "@/components/map/MenuButton";
 
 interface latlngprop {
   lat: number;
@@ -203,6 +204,7 @@ function MapPage() {
         ))}
       </MapContainer>
       <MarkerModal />
+      <FloatingMenuButton />
     </div>
   );
 }

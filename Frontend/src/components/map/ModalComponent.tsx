@@ -20,7 +20,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         justifyContent: "center",
         alignItems: "center",
         zIndex: 9999,
-        fontFamily: "'Segoe UI', sans-serif",
       }}
       onClick={onClose}
     >
@@ -28,7 +27,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         style={{
           backgroundColor: "#ffffff",
           padding: "2rem",
-          borderRadius: "1.5rem",
           minWidth: "320px",
           maxWidth: "90%",
           maxHeight: "90vh",
@@ -41,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Decorative cultural flair */}
-        <div
+        {/* <div
           style={{
             position: "absolute",
             top: "-1rem",
@@ -52,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
               "url('/assets/garuda-icon.svg') no-repeat center/contain",
           }}
           aria-hidden
-        />
+        /> */}
 
         <button
           onClick={onClose}

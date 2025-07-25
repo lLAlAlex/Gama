@@ -2,7 +2,7 @@ import AnimatedCursor from "react-animated-cursor"
 
 export default function App() {
   return (
-    <div className="App z-[5000]">
+    <div className="hidden lg:block App z-[5000]">
     <AnimatedCursor
       innerSize={10}
       outerSize={45}

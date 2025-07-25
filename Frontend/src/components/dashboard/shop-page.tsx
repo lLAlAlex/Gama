@@ -29,7 +29,7 @@ interface ShopItem {
   price: number
   originalPrice?: number
   category: string
-  rarity: "common" | "uncommon" | "rare" | "legendary"
+  rarity: "Common" | "Uncommon" | "Rare" | "Legendary"
   image: string
   inStock: number
   sold: number
@@ -69,7 +69,7 @@ export default function ShopPage() {
       price: 150,
       originalPrice: 200,
       category: "resources",
-      rarity: "common",
+      rarity: "Common",
       image: "/Images/Item/Resources/bamboo.png",
       inStock: 99,
       sold: 1247,
@@ -83,7 +83,7 @@ export default function ShopPage() {
       description: "Legendary tool that increases crafting success rate by 50%",
       price: 800,
       category: "tools",
-      rarity: "legendary",
+      rarity: "Legendary",
       image: "/Images/Item/Shop/golden_chisel.jpg",
       inStock: 5,
       sold: 89,
@@ -97,7 +97,7 @@ export default function ShopPage() {
       description: "Restore your energy instantly and continue exploring",
       price: 50,
       category: "boosts",
-      rarity: "common",
+      rarity: "Common",
       image: "/Images/Item/Shop/potion.png",
       inStock: 999,
       sold: 5432,
@@ -110,7 +110,7 @@ export default function ShopPage() {
       description: "Exclusive traditional outfit with cultural authenticity bonus",
       price: 450,
       category: "cosmetics",
-      rarity: "rare",
+      rarity: "Rare",
       image: "/Images/Item/Shop/batik.png",
       inStock: 25,
       sold: 234,
@@ -124,7 +124,7 @@ export default function ShopPage() {
       description: "30-day premium access with exclusive benefits and rewards",
       price: 999,
       category: "premium",
-      rarity: "legendary",
+      rarity: "Legendary",
       image: "/Images/Item/Shop/premium_pass.png",
       inStock: 999,
       sold: 1567,
@@ -138,7 +138,7 @@ export default function ShopPage() {
       description: "Exclusive traditional outfit with cultural authenticity bonus",
       price: 450,
       category: "cosmetics",
-      rarity: "rare",
+      rarity: "Rare",
       image: "/Images/Item/Shop/kebaya.png",
       inStock: 25,
       sold: 234,
@@ -153,7 +153,7 @@ export default function ShopPage() {
       price: 299,
       originalPrice: 450,
       category: "bundles",
-      rarity: "uncommon",
+      rarity: "Uncommon",
       image: "/Images/Item/Shop/starter.png",
       inStock: 75,
       sold: 678,
@@ -168,7 +168,7 @@ export default function ShopPage() {
       description: "Mystical amulet that provides protection during dangerous quests",
       price: 350,
       category: "tools",
-      rarity: "rare",
+      rarity: "Rare",
       image: "/Images/Item/Shop/Pendants_Jade_Amulet.webp",
       inStock: 12,
       sold: 156,
@@ -179,13 +179,13 @@ export default function ShopPage() {
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
-      case "common":
+      case "Common":
         return "bg-gray-100 text-gray-700 border-gray-200"
-      case "uncommon":
+      case "Uncommon":
         return "bg-green-100 text-green-700 border-green-200"
-      case "rare":
+      case "Rare":
         return "bg-blue-100 text-blue-700 border-blue-200"
-      case "legendary":
+      case "Legendary":
         return "bg-red-100 text-red-700 border-red-200"
       default:
         return "bg-gray-100 text-gray-700 border-gray-200"
@@ -194,13 +194,13 @@ export default function ShopPage() {
 
   const getRarityIcon = (rarity: string) => {
     switch (rarity) {
-      case "common":
+      case "Common":
         return "⚪"
-      case "uncommon":
+      case "Uncommon":
         return "🟢"
-      case "rare":
+      case "Rare":
         return "🔵"
-      case "legendary":
+      case "Legendary":
         return "🔴"
       default:
         return "⚪"
@@ -229,7 +229,7 @@ export default function ShopPage() {
         comparison = b.sold - a.sold
         break
       case "rarity":
-        const rarityOrder = { common: 1, uncommon: 2, rare: 3, legendary: 4 }
+        const rarityOrder = { Common: 1, Uncommon: 2, Rare: 3, Legendary: 4 }
         comparison = rarityOrder[a.rarity] - rarityOrder[b.rarity]
         break
       case "featured":

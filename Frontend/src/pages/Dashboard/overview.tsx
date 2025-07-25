@@ -20,6 +20,7 @@ import MemoryPassportPage from "@/components/dashboard/memory-passport-page"
 import SubmitContentPage from "@/components/dashboard/submit-content-page"
 import AdoptHeritagePage from "@/components/dashboard/adopt-heritage-page"
 import CommunityPage from "@/components/dashboard/community-page"
+import AvatarBuilderPage from "@/components/dashboard/avatar-builder-page"
 // import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 
 export default function Dashboard() {
@@ -106,6 +107,8 @@ export default function Dashboard() {
         return <AdoptHeritagePage />
       case "community":
         return <CommunityPage />
+      case "avatar":
+        return <AvatarBuilderPage />
       default:
         return null
     }

@@ -25,6 +25,7 @@ import {
   IdCard,
   Paperclip,
   Building,
+  Heart,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -95,13 +96,6 @@ export default function Sidebar({
       badge: "3",
     },
     {
-      id: "submit",
-      label: "Contribute",
-      icon: <Paperclip className="h-5 w-5" />,
-      color: "from-orange-500 to-red-600",
-      badge: "5",
-    },
-    {
       id: "journey",
       label: "Journey Recap",
       icon: <Map className="h-5 w-5" />,
@@ -116,9 +110,23 @@ export default function Sidebar({
       badge: "Sale",
     },
     {
+      id: "avatar",
+      label: "Avatar Builder",
+      icon: <Heart className="h-5 w-5" />,
+      color: "from-red-500 to-red-700",
+      badge: null,
+    },
+    {
       id: "achievements",
       label: "Achievements",
       icon: <Trophy className="h-5 w-5" />,
+      color: "from-orange-500 to-red-600",
+      badge: "5",
+    },
+    {
+      id: "submit",
+      label: "Contribute",
+      icon: <Paperclip className="h-5 w-5" />,
       color: "from-orange-500 to-red-600",
       badge: "5",
     },

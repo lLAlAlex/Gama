@@ -1,16 +1,27 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Progress } from "@/components/ui/progress"
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Progress } from "@/components/ui/progress";
 import {
   Search,
   Hammer,
@@ -27,7 +38,7 @@ import {
   Coins,
   Info,
   Target,
-} from "lucide-react"
+} from "lucide-react";
 
 // User's current resources
 const userResources = {
@@ -41,7 +52,7 @@ const userResources = {
   silk: 15,
   leather: 9,
   gems: 5,
-}
+};
 
 // Craftable items with recipes
 const craftableItems = [
@@ -197,7 +208,8 @@ const craftableItems = [
       "Songket is a traditional fabric woven with gold or silver threads, often used for ceremonial clothing and royal accessories.",
     culturalInsight:
       "Songket weaving is a centuries-old tradition found across the Malay world, including Indonesia, Malaysia, and Brunei. The word 'songket' comes from 'sungkit', meaning 'to hook' or 'to gouge'. The intricate patterns often represent flora, fauna, and geometric designs that carry cultural and spiritual meanings.",
-    image: "/Images/Craft/songket.png?height=200&width=200&text=Songket+Headpiece",
+    image:
+      "/Images/Craft/songket.png?height=200&width=200&text=Songket+Headpiece",
     recipe: {
       silk: 10,
       gold: 3,
@@ -214,7 +226,7 @@ const craftableItems = [
     isNew: true,
     completedCount: 0,
   },
-]
+];
 
 const categories = [
   { id: "all", name: "All Items", icon: Package },
@@ -223,26 +235,26 @@ const categories = [
   { id: "instruments", name: "Instruments", icon: Volume2 },
   { id: "art", name: "Art", icon: BookOpen },
   { id: "accessories", name: "Accessories", icon: Award },
-]
+];
 
 export default function CraftPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [sortBy, setSortBy] = useState("difficulty")
-  const [selectedItem, setSelectedItem] = useState<any>(null)
-  const [craftingItem, setCraftingItem] = useState<any>(null)
-  const [craftingProgress, setCraftingProgress] = useState(0)
-  const [showCulturalInsight, setShowCulturalInsight] = useState(false)
-  const [completedCraft, setCompletedCraft] = useState<any>(null)
-//   const [ttsLanguage, setTtsLanguage] = useState<"en" | "id">("en")
-  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("difficulty");
+  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [craftingItem, setCraftingItem] = useState<any>(null);
+  const [craftingProgress, setCraftingProgress] = useState(0);
+  const [showCulturalInsight, setShowCulturalInsight] = useState(false);
+  const [completedCraft, setCompletedCraft] = useState<any>(null);
+  //   const [ttsLanguage, setTtsLanguage] = useState<"en" | "id">("en")
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const filteredItems = useMemo(() => {
-    let filtered = craftableItems
+    let filtered = craftableItems;
 
     // Filter by category
     if (selectedCategory !== "all") {
-      filtered = filtered.filter((item) => item.category === selectedCategory)
+      filtered = filtered.filter((item) => item.category === selectedCategory);
     }
 
     // Filter by search query
@@ -251,117 +263,127 @@ export default function CraftPage() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())),
-      )
+          item.tags.some((tag) =>
+            tag.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+      );
     }
 
     // Sort items
     switch (sortBy) {
       case "name":
-        filtered.sort((a, b) => a.name.localeCompare(b.name))
-        break
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+        break;
       case "craftTime":
-        filtered.sort((a, b) => a.craftTime - b.craftTime)
-        break
+        filtered.sort((a, b) => a.craftTime - b.craftTime);
+        break;
       case "level":
-        filtered.sort((a, b) => a.unlockLevel - b.unlockLevel)
-        break
+        filtered.sort((a, b) => a.unlockLevel - b.unlockLevel);
+        break;
       default: // difficulty
-        const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3, legendary: 4 }
+        const difficultyOrder = {
+          beginner: 1,
+          intermediate: 2,
+          advanced: 3,
+          legendary: 4,
+        };
         filtered.sort(
           (a, b) =>
             difficultyOrder[a.difficulty as keyof typeof difficultyOrder] -
-            difficultyOrder[b.difficulty as keyof typeof difficultyOrder],
-        )
+            difficultyOrder[b.difficulty as keyof typeof difficultyOrder]
+        );
     }
 
-    return filtered
-  }, [selectedCategory, searchQuery, sortBy])
+    return filtered;
+  }, [selectedCategory, searchQuery, sortBy]);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "beginner":
-        return "bg-green-100 text-green-800 border-green-300"
-      case "intermediate":
-        return "bg-yellow-100 text-yellow-800 border-yellow-300"
-      case "advanced":
-        return "bg-orange-100 text-orange-800 border-orange-300"
-      case "legendary":
-        return "bg-purple-100 text-purple-800 border-purple-300"
+      case "Beginner":
+        return "bg-green-100 text-green-800 border-green-300";
+      case "Intermediate":
+        return "bg-yellow-100 text-yellow-800 border-yellow-300";
+      case "Advanced":
+        return "bg-orange-100 text-orange-800 border-orange-300";
+      case "Legendary":
+        return "bg-purple-100 text-purple-800 border-purple-300";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-300"
+        return "bg-gray-100 text-gray-800 border-gray-300";
     }
-  }
+  };
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
-      case "common":
-        return "text-gray-600"
-      case "uncommon":
-        return "text-green-600"
-      case "rare":
-        return "text-blue-600"
-      case "legendary":
-        return "text-purple-600"
+      case "Common":
+        return "text-gray-600";
+      case "Uncommon":
+        return "text-green-600";
+      case "Rare":
+        return "text-blue-600";
+      case "Legendary":
+        return "text-purple-600";
       default:
-        return "text-gray-600"
+        return "text-gray-600";
     }
-  }
+  };
 
   const canCraft = (recipe: any) => {
     return Object.entries(recipe).every(
-      ([resource, required]) => userResources[resource as keyof typeof userResources] >= (required as number),
-    )
-  }
+      ([resource, required]) =>
+        userResources[resource as keyof typeof userResources] >=
+        (required as number)
+    );
+  };
 
   const getMissingResources = (recipe: any) => {
-    const missing: string[] = []
+    const missing: string[] = [];
     Object.entries(recipe).forEach(([resource, required]) => {
-      const available = userResources[resource as keyof typeof userResources] || 0
+      const available =
+        userResources[resource as keyof typeof userResources] || 0;
       if (available < (required as number)) {
-        missing.push(`${resource}: need ${required}, have ${available}`)
+        missing.push(`${resource}: need ${required}, have ${available}`);
       }
-    })
-    return missing
-  }
+    });
+    return missing;
+  };
 
   const startCrafting = (item: any) => {
-    if (!canCraft(item.recipe)) return
+    if (!canCraft(item.recipe)) return;
 
-    setCraftingItem(item)
-    setCraftingProgress(0)
+    setCraftingItem(item);
+    setCraftingProgress(0);
 
     // Simulate crafting progress
     const interval = setInterval(() => {
       setCraftingProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(interval)
-          setCraftingItem(null)
-          setCompletedCraft(item)
-          setShowCulturalInsight(true)
-          return 100
+          clearInterval(interval);
+          setCraftingItem(null);
+          setCompletedCraft(item);
+          setShowCulturalInsight(true);
+          return 100;
         }
-        return prev + 100 / (item.craftTime * 0.1) // Faster for demo
-      })
-    }, 100)
-  }
+        return prev + 100 / (item.craftTime * 0.1); // Faster for demo
+      });
+    }, 100);
+  };
 
   const speakText = (text: string, language: "en" | "id") => {
     if ("speechSynthesis" in window) {
-      setIsSpeaking(true)
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = language === "en" ? "en-US" : "id-ID"
-      utterance.onend = () => setIsSpeaking(false)
-      speechSynthesis.speak(utterance)
+      setIsSpeaking(true);
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = language === "en" ? "en-US" : "id-ID";
+      utterance.onend = () => setIsSpeaking(false);
+      speechSynthesis.speak(utterance);
     }
-  }
+  };
 
   const stopSpeaking = () => {
     if ("speechSynthesis" in window) {
-      speechSynthesis.cancel()
-      setIsSpeaking(false)
+      speechSynthesis.cancel();
+      setIsSpeaking(false);
     }
-  }
+  };
 
   return (
     <div className="space-y-8">
@@ -379,12 +401,15 @@ export default function CraftPage() {
               Cultural Crafting Workshop
             </h1>
             <p className="text-red-100 text-lg">
-              Create traditional Indonesian artifacts and learn their cultural significance!
+              Create traditional Indonesian artifacts and learn their cultural
+              significance!
             </p>
           </div>
           <div className="text-right">
             <div className="text-2xl font-bold">Master Craftsman</div>
-            <div className="text-red-200 text-sm">Level 15 • 24 Items Crafted</div>
+            <div className="text-red-200 text-sm">
+              Level 15 • 24 Items Crafted
+            </div>
           </div>
         </div>
       </motion.div>
@@ -429,7 +454,10 @@ export default function CraftPage() {
 
             {/* Filters */}
             <div className="flex items-center gap-4">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <Select
+                value={selectedCategory}
+                onValueChange={setSelectedCategory}
+              >
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
@@ -464,7 +492,11 @@ export default function CraftPage() {
       {/* Crafting Progress */}
       <AnimatePresence>
         {craftingItem && (
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+          >
             <Card className="border-orange-200 bg-orange-50">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
@@ -472,12 +504,18 @@ export default function CraftPage() {
                     <Hammer className="h-8 w-8 text-orange-600 animate-bounce" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg">Crafting: {craftingItem.name}</h3>
+                    <h3 className="font-semibold text-lg">
+                      Crafting: {craftingItem.name}
+                    </h3>
                     <div className="flex items-center gap-2 mt-2">
                       <Progress value={craftingProgress} className="flex-1" />
-                      <span className="text-sm font-medium">{Math.round(craftingProgress)}%</span>
+                      <span className="text-sm font-medium">
+                        {Math.round(craftingProgress)}%
+                      </span>
                     </div>
-                    <div className="text-sm text-gray-600 mt-1">Estimated time: {craftingItem.craftTime} minutes</div>
+                    <div className="text-sm text-gray-600 mt-1">
+                      Estimated time: {craftingItem.craftTime} minutes
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -507,8 +545,18 @@ export default function CraftPage() {
 
                   {/* Badges */}
                   <div className="absolute top-2 left-2 flex flex-wrap gap-1">
-                    {item.isNew && <Badge className="bg-green-500 hover:bg-green-600 text-white text-xs">NEW</Badge>}
-                    <Badge className={`text-xs border ${getDifficultyColor(item.difficulty)}`}>{item.difficulty}</Badge>
+                    {item.isNew && (
+                      <Badge className="bg-green-500 hover:bg-green-600 text-white text-xs">
+                        NEW
+                      </Badge>
+                    )}
+                    <Badge
+                      className={`text-xs border ${getDifficultyColor(
+                        item.difficulty
+                      )}`}
+                    >
+                      {item.difficulty}
+                    </Badge>
                   </div>
 
                   {/* Completion Count */}
@@ -518,46 +566,66 @@ export default function CraftPage() {
 
                   {/* Rarity Indicator */}
                   <div
-                    className={`absolute bottom-0 left-0 right-0 h-1 ${getRarityColor(item.rarity).replace("text-", "bg-")}`}
+                    className={`absolute bottom-0 left-0 right-0 h-1 ${getRarityColor(
+                      item.rarity
+                    ).replace("text-", "bg-")}`}
                   />
                 </div>
 
                 {/* Content */}
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-semibold text-lg line-clamp-1 flex-1">{item.name}</h3>
-                    <Badge variant="outline" className={`ml-2 text-xs ${getRarityColor(item.rarity)}`}>
+                    <h3 className="font-semibold text-lg line-clamp-1 flex-1">
+                      {item.name}
+                    </h3>
+                    <Badge
+                      variant="outline"
+                      className={`ml-2 text-xs ${getRarityColor(item.rarity)}`}
+                    >
                       {item.rarity}
                     </Badge>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{item.description}</p>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                    {item.description}
+                  </p>
 
                   {/* Recipe Requirements */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium mb-2">Required Materials:</h4>
+                    <h4 className="text-sm font-medium mb-2">
+                      Required Materials:
+                    </h4>
                     <div className="grid grid-cols-2 gap-2">
-                      {Object.entries(item.recipe).map(([resource, required]) => {
-                        const available = userResources[resource as keyof typeof userResources] || 0
-                        const hasEnough = available >= (required as number)
+                      {Object.entries(item.recipe).map(
+                        ([resource, required]) => {
+                          const available =
+                            userResources[
+                              resource as keyof typeof userResources
+                            ] || 0;
+                          const hasEnough = available >= (required as number);
 
-                        return (
-                          <div
-                            key={resource}
-                            className={`flex items-center justify-between text-xs p-2 rounded ${hasEnough ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}
-                          >
-                            <span className="capitalize">{resource}</span>
-                            <span className="font-medium">
-                              {available}/{required}
-                              {hasEnough ? (
-                                <CheckCircle className="h-3 w-3 inline ml-1" />
-                              ) : (
-                                <XCircle className="h-3 w-3 inline ml-1" />
-                              )}
-                            </span>
-                          </div>
-                        )
-                      })}
+                          return (
+                            <div
+                              key={resource}
+                              className={`flex items-center justify-between text-xs p-2 rounded ${
+                                hasEnough
+                                  ? "bg-green-50 text-green-700"
+                                  : "bg-red-50 text-red-700"
+                              }`}
+                            >
+                              <span className="capitalize">{resource}</span>
+                              <span className="font-medium">
+                                {available}/{required}
+                                {hasEnough ? (
+                                  <CheckCircle className="h-3 w-3 inline ml-1" />
+                                ) : (
+                                  <XCircle className="h-3 w-3 inline ml-1" />
+                                )}
+                              </span>
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                   </div>
 
@@ -603,7 +671,9 @@ export default function CraftPage() {
                   {/* Missing Resources Warning */}
                   {!canCraft(item.recipe) && (
                     <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-xs">
-                      <div className="font-medium text-red-800 mb-1">Missing Resources:</div>
+                      <div className="font-medium text-red-800 mb-1">
+                        Missing Resources:
+                      </div>
                       {getMissingResources(item.recipe).map((missing, idx) => (
                         <div key={idx} className="text-red-600">
                           {missing}
@@ -619,12 +689,17 @@ export default function CraftPage() {
       </div>
 
       {/* Item Details Modal */}
-      <Dialog open={selectedItem !== null} onOpenChange={() => setSelectedItem(null)}>
+      <Dialog
+        open={selectedItem !== null}
+        onOpenChange={() => setSelectedItem(null)}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           {selectedItem && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl">{selectedItem.name}</DialogTitle>
+                <DialogTitle className="text-2xl">
+                  {selectedItem.name}
+                </DialogTitle>
               </DialogHeader>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -635,24 +710,43 @@ export default function CraftPage() {
                   />
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold mb-2">Recipe Requirements:</h4>
+                      <h4 className="font-semibold mb-2">
+                        Recipe Requirements:
+                      </h4>
                       <div className="grid grid-cols-2 gap-2">
-                        {Object.entries(selectedItem.recipe).map(([resource, required]) => {
-                          const available = userResources[resource as keyof typeof userResources] || 0
-                          const hasEnough = available >= (required as number)
+                        {Object.entries(selectedItem.recipe).map(
+                          ([resource, required]) => {
+                            const available =
+                              userResources[
+                                resource as keyof typeof userResources
+                              ] || 0;
+                            const hasEnough = available >= (required as number);
 
-                          return (
-                            <div
-                              key={resource}
-                              className={`flex items-center justify-between p-3 rounded ${hasEnough ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}
-                            >
-                              <span className="capitalize font-medium">{resource}</span>
-                              <span className={`font-bold ${hasEnough ? "text-green-700" : "text-red-700"}`}>
-                                {(available as number)}/{(required as number)}
-                              </span>
-                            </div>
-                          )
-                        })}
+                            return (
+                              <div
+                                key={resource}
+                                className={`flex items-center justify-between p-3 rounded ${
+                                  hasEnough
+                                    ? "bg-green-50 border border-green-200"
+                                    : "bg-red-50 border border-red-200"
+                                }`}
+                              >
+                                <span className="capitalize font-medium">
+                                  {resource}
+                                </span>
+                                <span
+                                  className={`font-bold ${
+                                    hasEnough
+                                      ? "text-green-700"
+                                      : "text-red-700"
+                                  }`}
+                                >
+                                  {available as number}/{required as number}
+                                </span>
+                              </div>
+                            );
+                          }
+                        )}
                       </div>
                     </div>
 
@@ -661,7 +755,9 @@ export default function CraftPage() {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <span>Experience Points</span>
-                          <span className="font-medium">{selectedItem.rewards.xp} XP</span>
+                          <span className="font-medium">
+                            {selectedItem.rewards.xp} XP
+                          </span>
                         </div>
                         <div className="flex items-center justify-between">
                           <span>Coins</span>
@@ -672,7 +768,9 @@ export default function CraftPage() {
                         </div>
                         <div className="flex items-center justify-between">
                           <span>Cultural Points</span>
-                          <span className="font-medium">{selectedItem.rewards.culturalPoints} CP</span>
+                          <span className="font-medium">
+                            {selectedItem.rewards.culturalPoints} CP
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -682,11 +780,17 @@ export default function CraftPage() {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold mb-2">Description</h4>
-                    <p className="text-gray-600">{selectedItem.longDescription}</p>
+                    <p className="text-gray-600">
+                      {selectedItem.longDescription}
+                    </p>
                   </div>
 
                   <div className="flex items-center gap-4 text-sm">
-                    <Badge className={getDifficultyColor(selectedItem.difficulty)}>{selectedItem.difficulty}</Badge>
+                    <Badge
+                      className={getDifficultyColor(selectedItem.difficulty)}
+                    >
+                      {selectedItem.difficulty}
+                    </Badge>
                     <span>Craft Time: {selectedItem.craftTime} minutes</span>
                     <span>Required Level: {selectedItem.unlockLevel}</span>
                   </div>
@@ -694,14 +798,18 @@ export default function CraftPage() {
                   <div className="flex gap-2">
                     <Button
                       className="flex-1"
-                      disabled={!canCraft(selectedItem.recipe) || craftingItem !== null}
+                      disabled={
+                        !canCraft(selectedItem.recipe) || craftingItem !== null
+                      }
                       onClick={() => {
-                        startCrafting(selectedItem)
-                        setSelectedItem(null)
+                        startCrafting(selectedItem);
+                        setSelectedItem(null);
                       }}
                     >
                       <Hammer className="h-4 w-4 mr-2" />
-                      {canCraft(selectedItem.recipe) ? "Start Crafting" : "Missing Materials"}
+                      {canCraft(selectedItem.recipe)
+                        ? "Start Crafting"
+                        : "Missing Materials"}
                     </Button>
                   </div>
                 </div>
@@ -733,7 +841,9 @@ export default function CraftPage() {
                   <div className="flex items-center justify-center gap-4 text-sm text-green-700">
                     <span>+{completedCraft.rewards.xp} XP</span>
                     <span>+{completedCraft.rewards.coins} Coins</span>
-                    <span>+{completedCraft.rewards.culturalPoints} Cultural Points</span>
+                    <span>
+                      +{completedCraft.rewards.culturalPoints} Cultural Points
+                    </span>
                   </div>
                 </div>
 
@@ -748,23 +858,39 @@ export default function CraftPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => speakText(completedCraft.culturalInsight, "en")}
+                        onClick={() =>
+                          speakText(completedCraft.culturalInsight, "en")
+                        }
                         disabled={isSpeaking}
                       >
-                        {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                        {isSpeaking ? (
+                          <VolumeX className="h-4 w-4" />
+                        ) : (
+                          <Volume2 className="h-4 w-4" />
+                        )}
                         English
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => speakText(completedCraft.culturalInsight, "id")}
+                        onClick={() =>
+                          speakText(completedCraft.culturalInsight, "id")
+                        }
                         disabled={isSpeaking}
                       >
-                        {isSpeaking ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                        {isSpeaking ? (
+                          <VolumeX className="h-4 w-4" />
+                        ) : (
+                          <Volume2 className="h-4 w-4" />
+                        )}
                         Indonesian
                       </Button>
                       {isSpeaking && (
-                        <Button variant="outline" size="sm" onClick={stopSpeaking}>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={stopSpeaking}
+                        >
                           <VolumeX className="h-4 w-4" />
                           Stop
                         </Button>
@@ -773,7 +899,9 @@ export default function CraftPage() {
                   </div>
 
                   <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="text-gray-700 leading-relaxed text-lg">{completedCraft.culturalInsight}</p>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      {completedCraft.culturalInsight}
+                    </p>
                   </div>
                 </div>
 
@@ -789,8 +917,8 @@ export default function CraftPage() {
                 <div className="flex justify-center">
                   <Button
                     onClick={() => {
-                      setShowCulturalInsight(false)
-                      setCompletedCraft(null)
+                      setShowCulturalInsight(false);
+                      setCompletedCraft(null);
                     }}
                   >
                     Continue Exploring
@@ -802,5 +930,5 @@ export default function CraftPage() {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }

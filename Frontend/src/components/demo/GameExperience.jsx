@@ -144,10 +144,11 @@ export const Experience = () => {
         <CharacterController />
         <Tugu scale={0.5} position={tuguPosition} />
         <Tugu scale={0.5} position={[5,0,5]} />
-        <Tugu scale={0.5} position={[-1,0,5]} />
         <Tugu scale={0.5} position={[-5,0,4]} />
         <Tugu scale={0.5} position={[6,0,1]} />
-        <Tugu scale={0.5} position={[10,0,8]} />
+        <Tugu scale={0.5} position={[12,0,5]} />
+        <Tugu scale={0.5} position={[5,0,12]} />
+        <Tugu scale={0.5} position={[-5,0,12]} />
         
         {chestPosition && (
           <Chest 

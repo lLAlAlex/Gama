@@ -56,7 +56,7 @@ const craftableItems = [
       "The Keris is more than just a weapon - it's a spiritual artifact that embodies the soul of Javanese culture. Each Keris is believed to possess its own spirit and brings protection to its owner.",
     culturalInsight:
       "The Keris originated in Java around the 9th century and is considered one of the masterpieces of Indonesian metalworking. The wavy blade, called 'luk', is believed to represent the body of a dragon or serpent, symbolizing strength and protection. In Javanese tradition, a Keris is passed down through generations and is thought to have supernatural powers.",
-    image: "/placeholder.svg?height=200&width=200&text=Keris+Dagger",
+    image: "/Images/Craft/keris.png?height=200&width=200&text=Keris+Dagger",
     recipe: {
       metal: 5,
       wood: 3,
@@ -85,7 +85,7 @@ const craftableItems = [
       "Batik is a traditional Indonesian art form that uses wax-resist dyeing to create intricate patterns on fabric. Each region has its own distinctive patterns and meanings.",
     culturalInsight:
       "Batik was recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity in 2009. The word 'batik' comes from the Javanese word 'amba' (to write) and 'titik' (dot). Traditional batik patterns often carry deep philosophical meanings and are used in important ceremonies and royal courts.",
-    image: "/placeholder.svg?height=200&width=200&text=Batik+Fabric",
+    image: "/Images/Craft/batik.png?height=200&width=200&text=Batik+Fabric",
     recipe: {
       cloth: 8,
       silk: 5,
@@ -113,7 +113,7 @@ const craftableItems = [
       "The gong is a central instrument in the Gamelan orchestra, producing deep, resonant tones that form the foundation of Indonesian traditional music.",
     culturalInsight:
       "Gamelan orchestras have been part of Indonesian culture for over 1,000 years. The gong represents the voice of the ancestors and is believed to have spiritual significance. In Balinese and Javanese traditions, gamelan music accompanies religious ceremonies, shadow puppet shows, and royal court events.",
-    image: "/placeholder.svg?height=200&width=200&text=Gamelan+Gong",
+    image: "/Images/Craft/gamelan.png?height=200&width=200&text=Gamelan+Gong",
     recipe: {
       metal: 10,
       gold: 2,
@@ -141,7 +141,7 @@ const craftableItems = [
       "Wayang puppets are used in traditional Indonesian shadow puppet theater to tell epic stories from Hindu mythology and local folklore.",
     culturalInsight:
       "Wayang is one of the oldest forms of storytelling in the world, dating back over 1,000 years. UNESCO recognized Wayang as a Masterpiece of Oral and Intangible Heritage of Humanity. The puppeteer, called a 'dalang', controls multiple puppets while providing voices and narration, often performing for 8-9 hours straight.",
-    image: "/placeholder.svg?height=200&width=200&text=Wayang+Puppet",
+    image: "/Images/Craft/wayang.png?height=200&width=200&text=Wayang+Puppet",
     recipe: {
       leather: 6,
       wood: 4,
@@ -170,7 +170,7 @@ const craftableItems = [
       "Angklung is a traditional Indonesian musical instrument made from bamboo tubes that produce sound when shaken.",
     culturalInsight:
       "The Angklung originated from West Java and has been played for centuries in Sundanese culture. UNESCO inscribed the Angklung as a Masterpiece of Oral and Intangible Heritage of Humanity in 2010. Traditionally, Angklung is played in large ensembles where each person plays one or two notes, requiring cooperation and harmony.",
-    image: "/placeholder.svg?height=200&width=200&text=Bamboo+Angklung",
+    image: "/Images/Craft/bamboo.png?height=200&width=200&text=Bamboo+Angklung",
     recipe: {
       bamboo: 12,
       wood: 2,
@@ -197,7 +197,7 @@ const craftableItems = [
       "Songket is a traditional fabric woven with gold or silver threads, often used for ceremonial clothing and royal accessories.",
     culturalInsight:
       "Songket weaving is a centuries-old tradition found across the Malay world, including Indonesia, Malaysia, and Brunei. The word 'songket' comes from 'sungkit', meaning 'to hook' or 'to gouge'. The intricate patterns often represent flora, fauna, and geometric designs that carry cultural and spiritual meanings.",
-    image: "/placeholder.svg?height=200&width=200&text=Songket+Headpiece",
+    image: "/Images/Craft/songket.png?height=200&width=200&text=Songket+Headpiece",
     recipe: {
       silk: 10,
       gold: 3,
@@ -500,7 +500,7 @@ export default function CraftPage() {
                 {/* Image */}
                 <div className="relative">
                   <img
-                    src={item.image || "/placeholder.svg"}
+                    src={item.image || "/Images/Craft/bamboo.png"}
                     alt={item.name}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -629,7 +629,7 @@ export default function CraftPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <img
-                    src={selectedItem.image || "/placeholder.svg"}
+                    src={selectedItem.image || "/Images/Craft/bamboo.png"}
                     alt={selectedItem.name}
                     className="w-full h-64 object-cover rounded-lg mb-4"
                   />
@@ -780,7 +780,7 @@ export default function CraftPage() {
                 {/* Item Image */}
                 <div className="text-center">
                   <img
-                    src={completedCraft.image || "/placeholder.svg"}
+                    src={completedCraft.image || "/Images/Craft/bamboo.png"}
                     alt={completedCraft.name}
                     className="w-48 h-48 object-cover rounded-lg mx-auto shadow-lg"
                   />

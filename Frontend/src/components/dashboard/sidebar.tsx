@@ -232,7 +232,7 @@ export default function Sidebar({
                   <AvatarFallback className="bg-red-500 text-white font-bold">AJ</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-gray-800 truncate">Ahmad Joko</div>
+                  <div className="font-semibold text-gray-800 truncate">Stanley Wijaya</div>
                   <div className="text-sm text-red-600 flex items-center gap-1">
                     <Star className="h-3 w-3 fill-current" />
                     Level 12 Explorer

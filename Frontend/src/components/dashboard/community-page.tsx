@@ -72,7 +72,7 @@ export default function CommunityPage() {
       id: 2,
       type: "cultural_story",
       author: {
-        name: "Ahmad Rizki",
+        name: "Stanley Rizki",
         avatar: "/placeholder.svg?height=40&width=40",
         level: "Heritage Guardian",
         location: "Bali",

@@ -16,7 +16,7 @@ export default function TestimonySection() {
       location: "Jakarta",
     },
     {
-      name: "Ahmad Rizki",
+      name: "Stanley Rizki",
       role: "History Teacher",
       avatar: "/placeholder.svg?height=60&width=60",
       rating: 5,

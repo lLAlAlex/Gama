@@ -109,18 +109,18 @@ export default function SettingsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" defaultValue="Ahmad" className="border-red-200 focus:border-red-500" />
+                    <Input id="firstName" defaultValue="Stanley" className="border-red-200 focus:border-red-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" defaultValue="Joko" className="border-red-200 focus:border-red-500" />
+                    <Input id="lastName" defaultValue="Wijaya" className="border-red-200 focus:border-red-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
                     <Input
                       id="email"
                       type="email"
-                      defaultValue="ahmad.joko@example.com"
+                      defaultValue="stanley.wijaya@example.com"
                       className="border-red-200 focus:border-red-500"
                     />
                   </div>

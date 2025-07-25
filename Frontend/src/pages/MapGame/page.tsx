@@ -44,8 +44,8 @@ const customIcon = new Icon({
 function MapGamePage() {
   const [answer] = useState<LatLngProp>({
     id: Date.now(),
-    lat: -6.2088,
-    lng: 106.8456,
+    lat: -0.94806860577927,
+    lng: 100.36417717625399,
   });
   const [tempMarker, setTempMarker] = useState<LatLngProp | null>(null);
   const [showLine, setShowLine] = useState(false);
@@ -69,8 +69,8 @@ function MapGamePage() {
             audioSrc: "/audio/padang.m4a",
             sentence: "Ambo ka pai makan sabanta lai.",
             meaning: "I'm going out to eat soon",
-            correctAnswer: "Padang",
-            description: "it is the local language in Sumatra."
+            correctAnswer: "Bahasa Minang",
+            description: "The main language spoken in Padang, the capital city of West Sumatra."
         },
         {
             questionNumber: 2,
@@ -200,7 +200,7 @@ function MapGamePage() {
       >
         Guess
       </button>
-      {showLine && distanceKm !== null && (
+      {/* {showLine && distanceKm !== null && (
         <div className="fixed bottom-0 left-0 w-full bg-[#222] text-white px-5 py-3 flex justify-center items-center z-[1001] shadow-[0_-2px_8px_rgba(0,0,0,0.5)] text-lg gap-4">
           <span>Distance: {distanceKm.toFixed(2)} km</span>
           <button
@@ -210,12 +210,12 @@ function MapGamePage() {
             Close
           </button>
         </div>
-      )}
+      )} */}
       <button
         onClick={openModal}
         className="fixed bottom-5 left-5 px-4 py-2 bg-green-600 text-white rounded cursor-pointer z-[1000] shadow-md text-base"
       >
-        Lihat Soal
+        See Question
       </button>
 
       {/* Modal */}

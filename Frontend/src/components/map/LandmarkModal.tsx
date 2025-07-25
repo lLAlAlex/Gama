@@ -4,6 +4,14 @@ import { useLandmarkModalStore } from "@/store/landmarkStore";
 import { Button } from "../ui/button";
 import { Calendar, MapPin, Navigation } from "lucide-react";
 
+
+interface Recommendation {
+  name: string;
+  category: string;
+  description: string;
+  city: string;
+}
+
 const MarkerModal: React.FC = () => {
   const { isModalOpen, selectedMarker, closeModal, isMarkerNear, distance } =
     useLandmarkModalStore();
@@ -23,6 +31,7 @@ const MarkerModal: React.FC = () => {
     // console.log(isMarkerNear);
     if (!isMarkerNear) return; // ignore click if disabled
     toggleContent();
+    fetchRecommendations();
   };
 
   const landmarks = [
@@ -55,6 +64,39 @@ const MarkerModal: React.FC = () => {
   };
   
   const landmark = landmarks.find(l => l.id === selectedMarker?.id);
+
+  
+  const [place, setPlace] = useState("Candi Borobudur");
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchRecommendations = async () => {
+    if (!place) return;
+    setError(null);
+    setRecommendations([]);
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/recommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ place_name: place })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        setError(errData.error || "Failed to fetch recommendations");
+        return;
+      }
+
+      const data: Recommendation[] = await response.json();
+      setRecommendations(data);
+      console.log(data)
+    } catch (e) {
+      setError("Network error or server not running");
+    }
+  };
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -204,6 +246,20 @@ const MarkerModal: React.FC = () => {
                 >
                   Accept
                 </Button>
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center">
+                    <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                    Recommended Places Nearby
+                  </h3>
+                  <ul className="space-y-2">
+                    {recommendations.slice(0, 5).map((rec, index) => (
+                      <li key={index} className="text-sm text-gray-600 flex items-start">
+                        <span className="w-1.5 h-1.5 bg-red-300 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        {rec.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           )}

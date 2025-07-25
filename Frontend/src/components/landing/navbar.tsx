@@ -91,10 +91,21 @@ export default function Navbar() {
                     {item.label}
                   </a>
                 ))}
-                <Button className="mt-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white">
-                  <Download className="h-4 w-4 mr-2" />
-                  Download App
+
+                <Button 
+                variant="outline"
+                className="items-center gap-2 border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => navigate("/login")}
+                  >
+                  <Download className="h-4 w-4" />
+                  Login
                 </Button>
+
+                <Button className="items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300" onClick={() => navigate("/register")}>
+                  <Download className="h-4 w-4" />
+                  Register
+                </Button>
+
               </nav>
             </SheetContent>
           </Sheet>

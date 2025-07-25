@@ -25,26 +25,40 @@ const MarkerModal: React.FC = () => {
     toggleContent();
   };
 
-  const landmark = {
-    name: "Monas (National Monument)",
-    image: "/Images/monas.jpg",
-    description:
-      "The National Monument, or Monas, is a 132-meter tower in the center of Merdeka Square, Central Jakarta. It symbolizes the fight for Indonesia's independence and is topped with a flame covered in gold foil.",
-    yearBuilt: "1975",
-    location: "Merdeka Square, Central Jakarta, Indonesia",
-    distance: "2.3 km",
-  };
+  const landmarks = [
+    {
+      id: 1,
+      name: "Candi Borobudur",
+      image: "/Images/candi-borobudur.jpg",
+      description:
+        "Candi Borobudur is a massive 9th-century Buddhist temple located in Central Java, Indonesia. It is one of the greatest Buddhist monuments in the world and a UNESCO World Heritage Site.",
+      yearBuilt: "8-9 century AD",
+      location: "Magelang, Central Java, Indonesia",
+    },
+    {
+      id: 2,
+      name: "Candi Mendut",
+      image: "/Images/candi-mendut.jpg",
+      description:
+        "Candi Mendut is a Buddhist temple located in Central Java, Indonesia. It is smaller than Borobudur but historically and religiously significant, especially as part of a trio of Buddhist temples including Borobudur and Pawon.",
+      yearBuilt: "9th century AD",
+      location: "Mendut Village, Central Java, Indonesia",
+    }
+  ]
 
   const reward = {
-    name: "Teak Wood",
-    image: "/Images/wood.webp",
-    quantity: 25,
-    type: "Resource",
+    name: "Saron recipe",
+    image: "/Images/Item/saron-recipe.png",
+    rarity: "rare",
+    type: "Recipe",
+    description: "The saron is a traditional Indonesian musical instrument, part of the Gamelan ensemble, which is a traditional orchestra."
   };
+  
+  const landmark = landmarks.find(l => l.id === selectedMarker?.id);
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
-      {selectedMarker ? (
+      {selectedMarker && landmark ? (
         <div>
           {!showAltContent ? (
             <div className="relative max-w-md">
@@ -154,7 +168,7 @@ const MarkerModal: React.FC = () => {
                         alt={reward.name}
                         width={80}
                         height={80}
-                        className="w-20 h-20 object-cover rounded-full"
+                        className="w-30 h-30 object-cover rounded-full"
                       />
                     </div>
                   </div>
@@ -169,23 +183,18 @@ const MarkerModal: React.FC = () => {
 
                 <div className="bg-gradient-to-r from-red-50 to-white rounded-2xl p-6 border border-red-100 text-center">
                   <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-                    Quantity Received
+                    Rarity
                   </p>
                   <div className="flex items-center justify-center space-x-2">
                     <span className="text-4xl font-bold text-red-600">
-                      +{reward.quantity}
+                      {reward.rarity}
                     </span>
-                    <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {reward.type}
-                    </div>
                   </div>
                 </div>
 
                 <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
                   <p className="text-gray-600 text-sm text-center leading-relaxed">
-                    High-quality {reward.name.toLowerCase()} collected from{" "}
-                    {landmark.name}. This valuable resource can be used for
-                    crafting and construction.
+                    {reward.description}
                   </p>
                 </div>
 

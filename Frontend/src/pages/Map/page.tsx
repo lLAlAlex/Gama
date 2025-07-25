@@ -22,7 +22,7 @@ interface LatLngProp {
 
 const redIcon = new L.Icon({
   iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
   shadowUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
   iconSize: [25, 41],
@@ -86,14 +86,14 @@ function Dummy({
 }) {
   const map = useMap();
   useEffect(() => {
-    const position = { lat: -6.60132, lng: 106.63574 };
+    const position = { lat: -7.608918901937046, lng: 110.20372317571795 };
     setUserPosition(position);
     map.flyTo([position.lat, position.lng], 16);
   }, [map, setUserPosition]);
 
   return (
     <MarkerLayer>
-      <MarkerReact position={[-6.60132, 106.63574]}>
+      <MarkerReact position={[-7.608918901937046, 110.20372317571795]}>
         <div className="relative" onClick={() => {console.log('clicked')}}>
           <div className="w-12 h-12 bg-blue-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
             <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
@@ -152,8 +152,8 @@ function MapPage() {
         lng: marker.lng,
       });
 
-      // If distance is less than 5km, mark it as red
-      if (distance < 5) {
+      // If distance is less than 0.5km, mark it as red
+      if (distance < 0.5) {
         acc[marker.id] = true;
       }
       return acc;
@@ -188,7 +188,7 @@ function MapPage() {
   return (
     <div className="relative">
       <MapContainer
-        center={[-6.256594023427226, 106.61834581534255]}
+        center={[-7.607509143101432, 110.20393321058025]}
         zoom={13}
         scrollWheelZoom={true}
         style={{ height: "100vh", width: "100vw" }}

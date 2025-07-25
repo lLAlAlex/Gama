@@ -12,6 +12,7 @@ import { TriviaModal } from "../../components/demo/TriviaModal";
 import { RewardModal } from "../../components/demo/RewardModal";
 import LandmarkModal from "../../components/demo/LandmarkModal";
 import { ZoomUI } from '../../components/demo/ZoomUI';
+import { Joystick } from '../../components/demo/Joystick';
 import { Leva } from "leva";
 
 const keyboardMap = [
@@ -36,6 +37,7 @@ function DemoPage() {
         <TriviaModal />
         <RewardModal />
         <LandmarkModal />
+        <Joystick />
         <Leva hidden />
       </KeyboardControls>
       <Modal />

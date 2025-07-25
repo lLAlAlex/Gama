@@ -84,7 +84,7 @@ const ChestSpawner = () => {
             return;
           }
           if (Math.random() < 0.3) {
-            console.log("Spawning a new chest!");
+            // console.log("Spawning a new chest!");
             const playerPos = useGameStore.getState().playerPosition;
             
             const angle = Math.random() * Math.PI * 2;

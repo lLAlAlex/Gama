@@ -115,4 +115,7 @@ export const useGameStore = create((set, get) => ({
       cameraZoomOffset: Math.min(state.cameraZoomOffset + 0.5, 4),
     }));
   },
+
+  joystickVector: { x: 0, y: 0 },
+  setJoystickVector: (vector) => set({ joystickVector: vector }),
 }));

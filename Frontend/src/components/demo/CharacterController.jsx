@@ -65,7 +65,7 @@ export const CharacterController = () => {
   const [subscribeKeys, get] = useKeyboardControls();
   const setPlayerPosition = useGameStore((state) => state.setPlayerPosition);
   const openChest = useGameStore((state) => state.openChest);
-  const { cameraZoomOffset, zoomIn, zoomOut } = useGameStore();
+  const { cameraZoomOffset, zoomIn, zoomOut, joystickVector } = useGameStore();
 
   const { gl } = useThree();
 
@@ -109,21 +109,24 @@ export const CharacterController = () => {
         x: 0,
         z: 0,
       };
+const keyboard = get();
+      
+      const joystickMagnitude = Math.sqrt(joystickVector.x ** 2 + joystickVector.y ** 2);
 
-      if (get().forward) {
-        movement.z = 1;
-      }
-      if (get().backward) {
-        movement.z = -1;
+      if (joystickMagnitude > 0.1) {
+        movement.z = -joystickVector.y;
+        movement.x = -joystickVector.x;
+      } else {
+        if (keyboard.forward) movement.z = 1;
+        if (keyboard.backward) movement.z = -1;
+        if (keyboard.left) movement.x = 1;
+        if (keyboard.right) movement.x = -1;
       }
 
-      let speed = get().run ? RUN_SPEED : WALK_SPEED;
-
-      if (get().left) {
-        movement.x = 1;
-      }
-      if (get().right) {
-        movement.x = -1;
+      let speed = keyboard.run ? RUN_SPEED : WALK_SPEED;
+      
+      if (joystickMagnitude > 0.1) {
+        speed *= joystickMagnitude;
       }
 
       if (movement.x !== 0) {
@@ -132,26 +135,18 @@ export const CharacterController = () => {
 
       if (movement.x !== 0 || movement.z !== 0) {
         characterRotationTarget.current = Math.atan2(movement.x, movement.z);
-        vel.x =
-          Math.sin(rotationTarget.current + characterRotationTarget.current) *
-          speed;
-        vel.z =
-          Math.cos(rotationTarget.current + characterRotationTarget.current) *
-          speed;
-        if (speed === RUN_SPEED) {
-          setAnimation("run");
-        } else {
-          setAnimation("walk");
-        }
+        vel.x = Math.sin(rotationTarget.current + characterRotationTarget.current) * speed;
+        vel.z = Math.cos(rotationTarget.current + characterRotationTarget.current) * speed;
+        setAnimation(speed > WALK_SPEED + 0.1 ? "run" : "walk");
       } else {
         setAnimation("idle");
       }
+      
       character.current.rotation.y = lerpAngle(
         character.current.rotation.y,
         characterRotationTarget.current,
         0.1
       );
-
       rb.current.setLinvel(vel, true);
     }
 

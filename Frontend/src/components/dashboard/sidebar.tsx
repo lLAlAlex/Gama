@@ -240,7 +240,7 @@ export default function Sidebar({
                     alt="User"
                   />
                   <AvatarFallback className="bg-red-500 text-white font-bold">
-                    AJ
+                    SW
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
@@ -261,7 +261,7 @@ export default function Sidebar({
                     alt="User"
                   />
                   <AvatarFallback className="bg-red-500 text-white font-bold text-sm">
-                    AJ
+                    SW
                   </AvatarFallback>
                 </Avatar>
               </div>

@@ -66,9 +66,9 @@ const MarkerModal: React.FC = () => {
   const landmark = landmarks.find(l => l.id === selectedMarker?.id);
 
   
-  const [place, setPlace] = useState("Candi Borobudur");
+  const [place,] = useState("Candi Borobudur");
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const fetchRecommendations = async () => {
     if (!place) return;
@@ -93,7 +93,7 @@ const MarkerModal: React.FC = () => {
       const data: Recommendation[] = await response.json();
       setRecommendations(data);
       console.log(data)
-    } catch (e) {
+    } catch {
       setError("Network error or server not running");
     }
   };

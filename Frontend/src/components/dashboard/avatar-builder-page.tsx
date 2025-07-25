@@ -194,7 +194,7 @@ export default function AvatarBuilderPage() {
     {
       id: "borobudur",
       name: "Borobudur Temple",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/borobudur.png?height=300&width=400&text=Borobudur+Temple/tips-voor-mount-bromo.jpg?height=300&width=400",
       location: "Central Java",
       unlocked: true,
       description: "Majestic Buddhist temple at sunrise",
@@ -202,7 +202,7 @@ export default function AvatarBuilderPage() {
     {
       id: "prambanan",
       name: "Prambanan Temple",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/Prambanan_Temple.jpg?height=300&width=400&text=Borobudur+Temple",
       location: "Yogyakarta",
       unlocked: true,
       description: "Hindu temple complex at golden hour",
@@ -210,7 +210,7 @@ export default function AvatarBuilderPage() {
     {
       id: "tanah-lot",
       name: "Tanah Lot Temple",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/TanahLot.jpg?height=300&width=400&text=Borobudur+Temple",
       location: "Bali",
       unlocked: false,
       description: "Iconic sea temple on rocky outcrop",
@@ -218,7 +218,7 @@ export default function AvatarBuilderPage() {
     {
       id: "lake-toba",
       name: "Lake Toba",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/Lake_Toba.jpg?height=300&width=400&text=Borobudur+Temple",
       location: "North Sumatra",
       unlocked: true,
       description: "Volcanic lake with Samosir Island",
@@ -226,7 +226,7 @@ export default function AvatarBuilderPage() {
     {
       id: "raja-ampat",
       name: "Raja Ampat",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/Raja_Ampat.jpg?height=300&width=400&text=Borobudur+Temple",
       location: "West Papua",
       unlocked: false,
       description: "Pristine marine paradise with karst islands",
@@ -234,7 +234,7 @@ export default function AvatarBuilderPage() {
     {
       id: "bromo",
       name: "Mount Bromo",
-      image: "/Images/logo.png?height=300&width=400",
+      image: "/Images/Wallpaper/tips-voor-mount-bromo.jpg?height=300&width=400&text=Borobudur+Temple",
       location: "East Java",
       unlocked: true,
       description: "Active volcano crater at sunrise",

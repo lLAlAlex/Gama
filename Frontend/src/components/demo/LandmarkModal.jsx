@@ -42,7 +42,7 @@ const LandmarkModal = () => {
   };
 
   const landmark = {
-    name: "Tugu Monument",
+    name: "Monas",
     image: "/Images/monas.jpg",
     description: "A historic monument representing the spirit of the nation. It is said that ancient recipes can be discovered by those who show respect.",
     yearBuilt: "1961",

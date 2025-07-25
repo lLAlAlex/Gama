@@ -17,6 +17,7 @@ import AchievementsPage from "@/components/dashboard/achievements-page"
 import InventoryPage from "@/components/dashboard/inventory-page"
 import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 import MemoryPassportPage from "@/components/dashboard/memory-passport-page"
+import SubmitContentPage from "@/components/dashboard/submit-content-page"
 // import JourneyRecapPage from "@/components/dashboard/journey-recap-page"
 
 export default function Dashboard() {
@@ -97,6 +98,8 @@ export default function Dashboard() {
         return <JourneyRecapPage />
       case "memory":
         return <MemoryPassportPage />
+      case "submit":
+        return <SubmitContentPage />
       default:
         return null
     }

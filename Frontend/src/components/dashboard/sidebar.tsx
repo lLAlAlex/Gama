@@ -23,6 +23,7 @@ import {
   ChevronLeft,
   Map,
   IdCard,
+  Paperclip,
 } from "lucide-react"
 
 interface SidebarProps {
@@ -85,6 +86,13 @@ export default function Sidebar({
       icon: <ShoppingBag className="h-5 w-5" />,
       color: "from-red-600 to-orange-500",
       badge: "Sale",
+    },
+    {
+      id: "submit",
+      label: "Contribute",
+      icon: <Paperclip className="h-5 w-5" />,
+      color: "from-orange-500 to-red-600",
+      badge: "5",
     },
     {
       id: "journey",

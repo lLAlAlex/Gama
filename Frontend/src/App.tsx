@@ -35,6 +35,7 @@ import DemoPage from "./pages/Demo/page";
 // User Dashboard
 
 import Dashboard from "./pages/Dashboard/overview";
+import MapGamePage from "./pages/MapGame/page";
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
 
             <Route path="/map" element={<MapPage />} />
             <Route path="/demo" element={<DemoPage />} />
+            <Route path="/map-game" element={<MapGamePage />} />
 
             {/* Authentication Pages */}
 

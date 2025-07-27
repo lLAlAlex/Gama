@@ -142,7 +142,7 @@ const userRecipes = [
       coins: 300,
       culturalPoints: 50,
     },
-    image: "/placeholder.svg?height=150&width=150&text=Keris",
+    image: "/Images/Craft/keris.png?height=150&width=150&text=Keris",
     discoveredAt: "Borobudur Temple",
     discoveryDate: "2024-01-15",
   },
@@ -166,7 +166,7 @@ const userRecipes = [
       coins: 250,
       culturalPoints: 40,
     },
-    image: "/placeholder.svg?height=150&width=150&text=Gong",
+    image: "/Images/Craft/gamelan.png?height=150&width=150&text=Gong",
     discoveredAt: "Yogyakarta Palace",
     discoveryDate: "2024-02-03",
   },
@@ -190,7 +190,7 @@ const userRecipes = [
       coins: 150,
       culturalPoints: 30,
     },
-    image: "/placeholder.svg?height=150&width=150&text=Batik",
+    image: "/Images/Craft/batik.png?height=150&width=150&text=Batik",
     discoveredAt: "Solo Palace",
     discoveryDate: "2024-01-28",
   },
@@ -214,7 +214,7 @@ const userRecipes = [
       coins: 200,
       culturalPoints: 45,
     },
-    image: "/placeholder.svg?height=150&width=150&text=Wayang",
+    image: "/Images/Item/wayang-kulit.png?height=150&width=150&text=Wayang",
     discoveredAt: "Not discovered yet",
     discoveryDate: null,
   },
@@ -238,7 +238,7 @@ const userRecipes = [
       coins: 80,
       culturalPoints: 20,
     },
-    image: "/placeholder.svg?height=150&width=150&text=Angklung",
+    image: "/Images/Craft/bamboo.png?height=150&width=150&text=Angklung",
     discoveredAt: "Bandung Cultural Center",
     discoveryDate: "2024-01-10",
   },
@@ -257,7 +257,7 @@ const userItems = [
       "This Keris was crafted following the ancient traditions of the Majapahit Kingdom. The wavy blade represents the body of a dragon, symbolizing strength and protection.",
     culturalSignificance:
       "In Javanese culture, the Keris is believed to have its own spirit and serves as a protector of its owner. It's passed down through generations as a family heirloom.",
-    image: "/placeholder.svg?height=200&width=200&text=Keris+Majapahit",
+    image: "/Images/Item/keris-majapahit.png?height=200&width=200&text=Keris+Majapahit",
     materials: ["Bronze Ingot", "Teak Wood", "Jade Stone", "Gold Leaf"],
     craftingLevel: 15,
     condition: "Excellent",
@@ -273,7 +273,7 @@ const userItems = [
       "This gong was crafted using traditional bronze-working techniques that have been preserved for over 1,000 years in Java.",
     culturalSignificance:
       "The Gong Ageng is considered the most sacred instrument in a gamelan ensemble, often believed to house ancestral spirits.",
-    image: "/placeholder.svg?height=200&width=200&text=Gong+Ageng",
+    image: "/Images/Craft/gamelan.png?height=200&width=200&text=Gong+Ageng",
     materials: ["Bronze Ingot", "Teak Wood"],
     craftingLevel: 12,
     condition: "Excellent",
@@ -289,7 +289,7 @@ const userItems = [
       "The Parang Rusak pattern was exclusively worn by Javanese royalty and symbolizes the continuous struggle against evil.",
     culturalSignificance:
       "This sacred pattern represents strength, bravery, and the eternal fight between good and evil forces.",
-    image: "/placeholder.svg?height=200&width=200&text=Batik+Parang",
+    image: "/Images/Item/batik-parang-rusak.png?height=200&width=200&text=Batik+Parang",
     materials: ["Silk Cloth", "Palm Leaves"],
     craftingLevel: 8,
     condition: "Good",
@@ -304,7 +304,7 @@ const userItems = [
     history: "These Angklung were crafted following the UNESCO-recognized traditions of West Java.",
     culturalSignificance:
       "Angklung music promotes cooperation and harmony, teaching the importance of working together to create beautiful melodies.",
-    image: "/placeholder.svg?height=200&width=200&text=Angklung+Set",
+    image: "/Images/Craft/bamboo.png?height=200&width=200&text=Angklung+Set",
     materials: ["Bamboo", "Teak Wood"],
     craftingLevel: 3,
     condition: "Excellent",
@@ -320,7 +320,7 @@ const userItems = [
       "This Songket was woven using traditional techniques from Palembang, incorporating intricate geometric patterns.",
     culturalSignificance:
       "Songket represents the pinnacle of Indonesian textile art, with each pattern carrying deep meaning related to nature and philosophy.",
-    image: "/placeholder.svg?height=200&width=200&text=Songket",
+    image: "/Images/Item/saron-recipe.png?height=200&width=200&text=Songket",
     materials: ["Silk Cloth", "Gold Leaf"],
     craftingLevel: 10,
     condition: "Excellent",
@@ -482,7 +482,7 @@ export default function InventoryPage() {
 
                       <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-lg mb-3 flex items-center justify-center">
                         <img
-                          src={resource.image || "/placeholder.svg"}
+                          src={resource.image || "/Images/Item/wayang-kulit.png"}
                           alt={resource.name}
                           className="w-32 h-32 object-cover rounded"
                         />
@@ -527,7 +527,7 @@ export default function InventoryPage() {
 
                       <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-lg mb-3 flex items-center justify-center relative">
                         <img
-                          src={recipe.image || "/placeholder.svg"}
+                          src={recipe.image || "/Images/Item/wayang-kulit.png"}
                           alt={recipe.name}
                           className="w-20 h-20 object-cover rounded"
                         />
@@ -581,7 +581,7 @@ export default function InventoryPage() {
 
                       <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-lg mb-3 flex items-center justify-center">
                         <img
-                          src={item.image || "/placeholder.svg"}
+                          src={item.image || "/Images/Item/wayang-kulit.png"}
                           alt={item.name}
                           className="w-20 h-20 object-cover rounded"
                         />
@@ -625,7 +625,7 @@ export default function InventoryPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center">
                     <img
-                      src={selectedResource.image || "/placeholder.svg"}
+                      src={selectedResource.image || "/Images/Item/wayang-kulit.png"}
                       alt={selectedResource.name}
                       className="w-32 h-32 object-cover rounded-lg"
                     />
@@ -703,7 +703,7 @@ export default function InventoryPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center">
                     <img
-                      src={selectedRecipe.image || "/placeholder.svg"}
+                      src={selectedRecipe.image || "/Images/Item/wayang-kulit.png"}
                       alt={selectedRecipe.name}
                       className="w-48 h-48 object-cover rounded-lg"
                     />
@@ -844,7 +844,7 @@ export default function InventoryPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="aspect-square bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center">
                     <img
-                      src={selectedItem.image || "/placeholder.svg"}
+                      src={selectedItem.image || "/Images/Item/wayang-kulit.png"}
                       alt={selectedItem.name}
                       className="w-48 h-48 object-cover rounded-lg"
                     />

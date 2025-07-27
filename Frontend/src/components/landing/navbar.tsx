@@ -103,12 +103,12 @@ export default function Navbar() {
 
                 <Button 
                 variant="outline"
-                className="hidden md:flex items-center gap-2 border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="items-center gap-2 border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-700 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => navigate("/dashboard")}
-            >
-            <Download className="h-4 w-4" />
-            Dashboard
-          </Button>
+                  >
+                  <Download className="h-4 w-4" />
+                  Dashboard
+                </Button>
 
                 <Button 
                 variant="outline"

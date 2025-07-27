@@ -18,6 +18,8 @@
 
 <b>Gama</b> is a cultural learning and preservation platform that empowers communities to contribute, explore, translate, and gamify Indonesian heritage. In a time where languages, traditions, and knowledge are disappearing, Gama helps people reconnect with culture through technology, interaction, and storytelling. It brings fun, inclusivity, and accessibility into cultural learning—ensuring that the spirit of <i>Bhinneka Tunggal Ika</i> continues to thrive.
 
+<a href="https://devpost.com/software/gama-xg1mqc?_gl=1*1kxfpz8*_gcl_au*MjUwNjA4NzA5LjE3NDk5NTEzMDc.*_ga*OTk5MTg3MTE4LjE3NDk5NTEzMDg.*_ga_0YHJK3Y10M*czE3NTM1OTMyNTUkbzQwJGcxJHQxNzUzNTkzMjY2JGo0OSRsMCRoMA..">GarudaHacks 6.0 Hackathon DevPost Link</a>
+
 ---
 
 ## 📃 Table of Contents
